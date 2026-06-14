@@ -18,9 +18,12 @@ Icon
 *.sublime-workspace
 *.sublime-project
 
-# Dependencies (future)
+# Dependencies
 node_modules/
 bower_components/
+
+# Environment (backend)
+.env
 
 # Build output (future)
 dist/

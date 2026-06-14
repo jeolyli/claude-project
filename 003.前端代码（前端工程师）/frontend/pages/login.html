@@ -10,160 +10,223 @@
   <script src="../js/icons.js"></script>
 </head>
 <body>
-  <div class="auth-page">
-    <!-- 背景装饰 -->
-    <div class="auth-decoration" style="font-size: 36px;">🌸</div>
-    <div class="auth-decoration" style="font-size: 28px;">💕</div>
-    <div class="auth-decoration" style="font-size: 24px;">✨</div>
+  <div id="root"></div>
 
-    <!-- 主卡片 -->
-    <div class="auth-card">
-      <div class="auth-mascot animate-heartbeat">🐰</div>
-      <h1 class="auth-title">灵记</h1>
-      <p class="auth-subtitle">欢迎回来，今天也要好好记账哦～</p>
+  <!-- React 核心（本地副本，无需外网） -->
+  <script src="../js/vendor/react.production.min.js"></script>
+  <script src="../js/vendor/react-dom.production.min.js"></script>
 
-      <!-- 错误提示 -->
-      <p class="auth-error" id="authError"></p>
+  <script>
+    const { createElement: h, useState, useEffect, useRef } = React;
 
-      <!-- 登录表单 -->
-      <form class="auth-form" id="loginForm">
-        <div class="auth-field">
-          <input type="text" class="auth-input" id="loginUser" placeholder="用户名" maxlength="20" autocomplete="username" autofocus>
-        </div>
-        <div class="auth-field">
-          <input type="password" class="auth-input" id="loginPass" placeholder="密码" maxlength="20" autocomplete="current-password">
-          <button type="button" class="password-toggle" id="togglePassBtn">
-            <span class="material-symbols-outlined">visibility</span>
-          </button>
-        </div>
-        <button type="submit" class="auth-submit" id="loginSubmit">登录</button>
-      </form>
+    // ===== localStorage 预设分类（与 storage.js 保持一致） =====
+    const PRESET_CATEGORIES = [
+      { id:'cat_food',          name:'餐饮', icon:'🍽️', color:'#FFAB91', type:'both', sort_order:1, is_preset:true, is_active:true },
+      { id:'cat_transport',     name:'交通', icon:'🚌', color:'#9EB7D4', type:'both', sort_order:2, is_preset:true, is_active:true },
+      { id:'cat_shopping',      name:'购物', icon:'🛒', color:'#FFB3C6', type:'both', sort_order:3, is_preset:true, is_active:true },
+      { id:'cat_housing',       name:'居住', icon:'🏠', color:'#F0D5BE', type:'both', sort_order:4, is_preset:true, is_active:true },
+      { id:'cat_entertainment', name:'娱乐', icon:'🎮', color:'#C5A3D9', type:'both', sort_order:5, is_preset:true, is_active:true },
+      { id:'cat_medical',       name:'医疗', icon:'💊', color:'#A8D8CA', type:'both', sort_order:6, is_preset:true, is_active:true },
+      { id:'cat_education',     name:'教育', icon:'📚', color:'#F9E4B7', type:'both', sort_order:7, is_preset:true, is_active:true },
+      { id:'cat_other',         name:'其他', icon:'📦', color:'#D4C5CB', type:'both', sort_order:8, is_preset:true, is_active:true },
+    ];
 
-      <!-- 底部链接 -->
-      <p class="auth-switch">
-        没有账号？
-        <a href="register.html" class="auth-switch-btn">立即注册</a>
-      </p>
-    </div>
-  </div>
+    // ===== API 基础地址 =====
+    const API_BASE = window.location.origin + '/api';
 
-  <script type="module">
-    import { hashPassword } from '../js/crypto.js';
-    import {
-      findUserByUsername,
-      saveUser,
-      saveSession,
-      isSessionValid,
-      isLoginLocked,
-      recordLoginFailure,
-      resetLoginFailRecord,
-    } from '../js/storage.js';
+    // ===== 登录页面组件 =====
+    function LoginPage() {
+      const [username, setUsername] = useState('');
+      const [password, setPassword] = useState('');
+      const [showPass, setShowPass] = useState(false);
+      const [error, setError]     = useState('');
+      const [loading, setLoading] = useState(false);
+      const [toast, setToast]     = useState(null);
+      const [shake, setShake]     = useState(false);
+      const usernameRef = useRef(null);
 
-    // 已登录则跳转首页
-    if (isSessionValid()) {
-      window.location.replace('home.html');
+      // 已登录则跳转首页
+      useEffect(() => {
+        try {
+          const raw = localStorage.getItem('lingji_current_user');
+          if (raw) {
+            const session = JSON.parse(raw);
+            if (Date.now() < new Date(session.expires_at).getTime()) {
+              window.location.replace('home.html');
+            }
+          }
+        } catch (_) {}
+        usernameRef.current?.focus();
+      }, []);
+
+      // 自动清除错误
+      useEffect(() => {
+        if (!error) return;
+        const t = setTimeout(() => setError(''), 4000);
+        return () => clearTimeout(t);
+      }, [error]);
+
+      const showToast = (msg) => {
+        setToast(msg);
+        setTimeout(() => setToast(null), 2200);
+      };
+
+      const triggerShake = () => {
+        setShake(true);
+        setTimeout(() => setShake(false), 300);
+      };
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        // 客户端校验
+        const u = username.trim();
+        if (!u) { setError('请输入用户名'); triggerShake(); return; }
+        if (u.length < 2 || u.length > 20) { setError('用户名应为2-20个字符'); triggerShake(); return; }
+        if (!password) { setError('请输入密码'); triggerShake(); return; }
+
+        setLoading(true);
+        try {
+          const res = await fetch(`${API_BASE}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: u, password }),
+          });
+          const data = await res.json();
+
+          if (!data.success) {
+            setError(data.error || '登录失败');
+            triggerShake();
+            setLoading(false);
+            return;
+          }
+
+          // --- 登录成功 → 写 localStorage 桥接原生页面 ---
+          const now = new Date().toISOString();
+          const session = {
+            id: data.user.id,
+            username: data.user.username,
+            avatar: data.user.avatar || null,
+            login_time: now,
+            expires_at: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+          };
+          localStorage.setItem('lingji_current_user', JSON.stringify(session));
+
+          // 向后兼容: 同步写入 lingji_users
+          try {
+            const users = JSON.parse(localStorage.getItem('lingji_users') || '{}');
+            users[data.user.id] = {
+              id: data.user.id,
+              username: data.user.username,
+              avatar: data.user.avatar || null,
+              password_hash: '',
+              salt: '',
+              created_at: now,
+              last_login_at: now,
+              is_active: true,
+            };
+            localStorage.setItem('lingji_users', JSON.stringify(users));
+          } catch (_) {}
+
+          // 如果该用户没有 localStorage 数据，则初始化
+          if (!localStorage.getItem(`lingji_data_${data.user.id}`)) {
+            localStorage.setItem(`lingji_data_${data.user.id}`, JSON.stringify({
+              transactions: [],
+              categories: [...PRESET_CATEGORIES],
+              budget: { total_budget: 5000, category_budgets: {} },
+              recurringBills: [],
+            }));
+          }
+
+          showToast('🎉 登录成功！欢迎回来～');
+          setTimeout(() => { window.location.href = 'home.html'; }, 600);
+        } catch (_) {
+          setError('网络错误，请检查后端服务是否启动');
+          triggerShake();
+          setLoading(false);
+        }
+      };
+
+      // ===== JSX-free 渲染 =====
+      return h('div', { className: 'auth-page' },
+        // 背景装饰
+        h('div', { className: 'auth-decoration', style: { fontSize: '36px' } }, '🌸'),
+        h('div', { className: 'auth-decoration', style: { fontSize: '28px' } }, '💕'),
+        h('div', { className: 'auth-decoration', style: { fontSize: '24px' } }, '✨'),
+
+        // 主卡片
+        h('div', { className: 'auth-card' },
+          h('div', { className: 'auth-mascot animate-heartbeat' }, '🐰'),
+          h('h1', { className: 'auth-title' }, '灵记'),
+          h('p',  { className: 'auth-subtitle' }, '欢迎回来，今天也要好好记账哦～'),
+
+          // 错误提示
+          h('p', {
+            className: 'auth-error' + (error ? ' auth-error--visible' : ''),
+          }, error || ' '),
+
+          // 表单
+          h('form', {
+            className: 'auth-form' + (shake ? ' auth-form--shake' : ''),
+            onSubmit: handleSubmit,
+          },
+            h('div', { className: 'auth-field' },
+              h('input', {
+                ref: usernameRef,
+                className: 'auth-input',
+                type: 'text',
+                placeholder: '用户名',
+                maxLength: 20,
+                autoComplete: 'username',
+                value: username,
+                onInput: (e) => setUsername(e.target.value),
+              })
+            ),
+            h('div', { className: 'auth-field', style: { position: 'relative' } },
+              h('input', {
+                className: 'auth-input',
+                type: showPass ? 'text' : 'password',
+                placeholder: '密码',
+                maxLength: 20,
+                autoComplete: 'current-password',
+                value: password,
+                onInput: (e) => setPassword(e.target.value),
+              }),
+              h('button', {
+                type: 'button',
+                className: 'password-toggle',
+                onClick: () => setShowPass(!showPass),
+              },
+                h('span', { className: 'material-symbols-outlined' },
+                  showPass ? 'visibility_off' : 'visibility'
+                )
+              )
+            ),
+            h('button', {
+              type: 'submit',
+              className: 'auth-submit',
+              disabled: loading,
+              style: loading ? { opacity: 0.6, cursor: 'not-allowed' } : {},
+            }, loading ? '登录中...' : '登录')
+          ),
+
+          // 底部链接
+          h('p', { className: 'auth-switch' },
+            '没有账号？',
+            h('a', { href: 'register.html', className: 'auth-switch-btn' }, '立即注册')
+          )
+        ),
+
+        // Toast
+        toast && h('div', { className: 'toast animate-toast-in' }, toast)
+      );
     }
 
-    // 密码可见切换
-    document.getElementById('togglePassBtn').addEventListener('click', function () {
-      const input = document.getElementById('loginPass');
-      const icon = this.querySelector('.material-symbols-outlined');
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.textContent = 'visibility_off';
-      } else {
-        input.type = 'password';
-        icon.textContent = 'visibility';
-      }
-    });
-
-    // 表单提交
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      const errorEl = document.getElementById('authError');
-      errorEl.classList.remove('auth-error--visible');
-
-      const username = document.getElementById('loginUser').value.trim();
-      const password = document.getElementById('loginPass').value;
-
-      // 验证
-      if (!username) {
-        errorEl.textContent = '请输入用户名';
-        errorEl.classList.add('auth-error--visible');
-        shake();
-        return;
-      }
-      if (username.length < 2 || username.length > 20) {
-        errorEl.textContent = '用户名应为2-20个字符';
-        errorEl.classList.add('auth-error--visible');
-        shake();
-        return;
-      }
-      if (!password) {
-        errorEl.textContent = '请输入密码';
-        errorEl.classList.add('auth-error--visible');
-        shake();
-        return;
-      }
-
-      // 锁定检查
-      if (isLoginLocked()) {
-        errorEl.textContent = '登录尝试次数过多，请15分钟后再试';
-        errorEl.classList.add('auth-error--visible');
-        shake();
-        return;
-      }
-
-      // 查找用户
-      const found = findUserByUsername(username);
-      if (!found) {
-        const result = recordLoginFailure();
-        errorEl.textContent = result.locked ? `登录尝试次数过多，请${result.remainingMinutes}分钟后再试` : '用户名或密码错误';
-        errorEl.classList.add('auth-error--visible');
-        shake();
-        return;
-      }
-
-      // 验证密码
-      const hashed = await hashPassword(password, found.salt);
-      if (hashed !== found.password_hash) {
-        const result = recordLoginFailure();
-        errorEl.textContent = result.locked ? `登录尝试次数过多，请${result.remainingMinutes}分钟后再试` : '用户名或密码错误';
-        errorEl.classList.add('auth-error--visible');
-        shake();
-        return;
-      }
-
-      // 登录成功
-      found.last_login_at = new Date().toISOString();
-      saveUser(found);
-      saveSession(found);
-      resetLoginFailRecord();
-
-      showToast('🎉 登录成功！欢迎回来～');
-      setTimeout(() => { window.location.href = 'home.html'; }, 600);
-    });
-
-    function shake() {
-      const form = document.getElementById('loginForm');
-      form.classList.add('auth-form--shake');
-      setTimeout(() => form.classList.remove('auth-form--shake'), 300);
-    }
-
-    function showToast(message) {
-      const existing = document.querySelector('.toast');
-      if (existing) existing.remove();
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = message;
-      document.body.appendChild(toast);
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transition = 'opacity 0.3s';
-        setTimeout(() => toast.remove(), 300);
-      }, 2000);
-    }
+    // ===== 挂载 =====
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      h(LoginPage)
+    );
   </script>
 </body>
 </html>
