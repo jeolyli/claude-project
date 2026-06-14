@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF85A2">
+  <title>灵记 - 账单</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/bills.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* 分类图标颜色 */
+    .bills-item-icon[data-category="餐饮"] { background: #FFF0EE; }
+    .bills-item-icon[data-category="交通"] { background: #EEF4FA; }
+    .bills-item-icon[data-category="购物"] { background: #FFF0F5; }
+    .bills-item-icon[data-category="居住"] { background: #FEF6EF; }
+    .bills-item-icon[data-category="娱乐"] { background: #F5EFFA; }
+    .bills-item-icon[data-category="医疗"] { background: #EEF8F4; }
+    .bills-item-icon[data-category="教育"] { background: #FEFAEE; }
+    .bills-item-icon[data-category="其他"] { background: #F8F3F5; }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- 顶部导航 -->
+    <header class="app-header">
+      <div class="header-left">
+        <span class="header-mascot">🐰</span>
+        <h1 class="header-title">账单</h1>
+      </div>
+      <div class="header-right" id="headerRight"></div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content bills-page">
+      <!-- 搜索框 -->
+      <div class="bills-search">
+        <span class="material-symbols-outlined bills-search-icon">search</span>
+        <input type="text" class="bills-search-input" id="searchInput" placeholder="搜索金额、分类、备注...">
+      </div>
+
+      <!-- 筛选条件 -->
+      <div class="bills-filters">
+        <!-- 类型筛选 -->
+        <div class="bills-filter-row">
+          <span class="bills-filter-row-label">
+            <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          </span>
+          <div class="bills-filter-row-chips" id="typeFilter">
+            <button class="bills-pill bills-pill--active" data-type="all">全部</button>
+            <button class="bills-pill" data-type="expense">
+              <span class="material-symbols-outlined" style="font-size:14px;">trending_down</span> 支出
+            </button>
+            <button class="bills-pill" data-type="income">
+              <span class="material-symbols-outlined" style="font-size:14px;">trending_up</span> 收入
+            </button>
+          </div>
+        </div>
+
+        <!-- 分类筛选 -->
+        <div class="bills-filter-row">
+          <span class="bills-filter-row-label">
+            <span class="material-symbols-outlined" style="font-size:16px;">category</span>
+          </span>
+          <div class="bills-filter-row-chips bills-filter-row-chips--scroll" id="categoryFilter">
+            <button class="bills-pill bills-pill--active" data-category="all">全部</button>
+          </div>
+        </div>
+
+        <!-- 时间筛选 -->
+        <div class="bills-filter-row">
+          <span class="bills-filter-row-label">
+            <span class="material-symbols-outlined" style="font-size:16px;">calendar_month</span>
+          </span>
+          <div class="bills-filter-row-chips bills-filter-row-chips--scroll" id="timeFilter">
+            <button class="bills-pill bills-pill--active" data-time="all">全部</button>
+            <button class="bills-pill" data-time="today">今天</button>
+            <button class="bills-pill" data-time="week">本周</button>
+            <button class="bills-pill" data-time="month">本月</button>
+            <button class="bills-pill" data-time="3months">近三月</button>
+            <button class="bills-pill" data-time="6months">近半年</button>
+            <button class="bills-pill" data-time="year">今年</button>
+          </div>
+        </div>
+
+        <!-- 日期范围选择（自定义时显示） -->
+        <div class="bills-filter-row bills-date-range" id="dateRangeRow" style="display:none;">
+          <span class="bills-filter-row-label">
+            <span class="material-symbols-outlined" style="font-size:16px;">date_range</span>
+          </span>
+          <div class="bills-date-inputs">
+            <input type="date" class="bills-date-input" id="dateStart">
+            <span style="color:var(--color-neutral-400);font-size:13px;">至</span>
+            <input type="date" class="bills-date-input" id="dateEnd">
+          </div>
+        </div>
+      </div>
+
+      <!-- 结果统计 -->
+      <div class="bills-result-info" id="resultInfo" style="display:none;">
+        <span id="resultCount">0</span> 条记录
+      </div>
+
+      <!-- 账单列表容器 -->
+      <div id="billListContainer"></div>
+
+      <div class="bottom-spacer"></div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="tab-bar" id="tabBar"></nav>
+  </div>
+
+  <script type="module" src="../js/bills.js"></script>
+  <script type="module">
+    import { renderHeaderUser } from '../js/app.js';
+    renderHeaderUser('#headerRight');
+  </script>
+</body>
+</html>

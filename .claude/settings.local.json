@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/jialili/.claude/skills/**)",
+      "Read(//Users/jialili/.claude/**)",
+      "Bash(npm ls *)"
+    ]
+  }
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kawaii-shadow {
+            box-shadow: 0 8px 32px rgba(255, 133, 162, 0.15);
+        }
+        .active-tab-glow {
+            box-shadow: 0 4px 12px rgba(160, 58, 87, 0.2);
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom scrollbar for category grid */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#f7dbe5",
+                        "surface-variant": "#f7dbe5",
+                        "accent-coral": "#FF7B89",
+                        "on-primary-fixed": "#3f0017",
+                        "on-secondary-fixed": "#370a1b",
+                        "inverse-on-surface": "#ffecf1",
+                        "accent-mint": "#A8D8CA",
+                        "tertiary": "#8d4d38",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fff8f8",
+                        "background": "#fff8f8",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#ffd9df",
+                        "on-secondary-fixed-variant": "#6c3546",
+                        "on-error": "#ffffff",
+                        "bg-soft": "#FFEEF2",
+                        "surface-tint": "#a03a57",
+                        "tertiary-container": "#e7977e",
+                        "secondary-fixed-dim": "#fdb2c5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#771a38",
+                        "chart-housing": "#F0D5BE",
+                        "surface-dim": "#eed3dc",
+                        "tertiary-fixed": "#ffdbd0",
+                        "inverse-surface": "#3d2c33",
+                        "primary": "#a03a57",
+                        "surface-pink": "#FBF5F7",
+                        "secondary": "#884c5d",
+                        "on-background": "#26171e",
+                        "on-surface": "#26171e",
+                        "chart-transport": "#9EB7D4",
+                        "on-tertiary-container": "#672f1c",
+                        "primary-container": "#ff85a2",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#fde1ea",
+                        "chart-education": "#F9E4B7",
+                        "surface-container": "#ffe8ef",
+                        "on-tertiary-fixed": "#390c01",
+                        "primary-fixed-dim": "#ffb1c1",
+                        "on-surface-variant": "#554245",
+                        "on-tertiary-fixed-variant": "#713623",
+                        "surface": "#fff8f8",
+                        "inverse-primary": "#ffb1c1",
+                        "accent-lavender": "#C5A3D9",
+                        "on-primary-fixed-variant": "#812240",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffd9e1",
+                        "secondary-container": "#fdb2c5",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#fff0f4",
+                        "outline": "#887175",
+                        "outline-variant": "#dbc0c4",
+                        "on-secondary-container": "#7a4151"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "container-margin": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "title-sm": ["Plus Jakarta Sans"],
+                        "body-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-caps": ["Be Vietnam Pro"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-numeric": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Main Container / Modal Shell -->
+<main class="w-full max-w-lg bg-surface-pink rounded-2xl kawaii-shadow overflow-hidden relative border border-outline-variant/30">
+<!-- Top Navigation Bar (Shared Component Strategy) -->
+<header class="bg-background dark:bg-background flex justify-between items-center px-container-margin py-md w-full relative z-10">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform" onclick="window.location.href='{{DATA:SCREEN:SCREEN_5}}'">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container">添加收支</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Toggle Switch (Expense/Income) -->
+<section class="px-container-margin mt-md">
+<div class="bg-surface-container-high rounded-full p-1 flex items-center relative h-12">
+<button class="relative z-10 flex-1 text-center font-title-sm text-title-sm transition-all duration-300 text-on-primary-container font-bold" id="toggle-expense" onclick="toggleType('expense')">支出</button>
+<button class="relative z-10 flex-1 text-center font-title-sm text-title-sm transition-all duration-300 text-on-surface-variant" id="toggle-income" onclick="toggleType('income')">收入</button>
+<!-- Sliding Background -->
+<div class="absolute h-10 w-[calc(50%-4px)] bg-primary-container rounded-full transition-all duration-300 left-1 active-tab-glow" id="toggle-bg"></div>
+</div>
+</section>
+<!-- Amount Input Field -->
+<section class="px-container-margin mt-lg text-center relative">
+<label class="block text-on-surface-variant font-label-caps text-label-caps mb-xs uppercase tracking-widest">金额</label>
+<div class="flex items-center justify-center gap-xs">
+<span class="text-primary font-headline-lg text-headline-lg">¥</span>
+<input autofocus="" class="bg-transparent border-none focus:ring-0 text-center font-headline-lg text-[40px] text-on-background w-full max-w-[240px] placeholder-on-surface-variant/30" placeholder="0.00" step="0.01" type="number">
+</div>
+<!-- Ling Ling Mascot - Absolute position peeking -->
+<div class="absolute -top-4 -right-2 w-24 h-24 pointer-events-none opacity-90">
+<img alt="Ling Ling Mascot" class="w-full h-full object-contain" data-alt="A cute Kawaii bunny mascot named Ling Ling, with soft white fur and rosy pink cheeks, peeking curiously from the right side of the screen. The bunny has expressive sparkly eyes and small floppy ears. The style is 3D rendered with a soft, clay-like texture, matching a warm pink and pastel color palette. The lighting is gentle and atmospheric, creating a healing and approachable mood for a finance app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFyNBBME4JrYtw4h2EGkJ8LbGKFN6ZfzBnf4gMdahg8DAm2DiPUrlAsghXnRGfR7WwrKjxxkbDu_UHrsl4TY5SwpN7VqdI5nYoC5WE9WNZQaa3My9qNo2aSjT2vav23uKMyad1qqA53IQcsy4RIb2U5I8aVc2bPQavB-_mBmulf0pdrL7NVHlEJXX3KLHs0VB-AwgzmIB14h9tVJms2i110Uw6aiaIO8cPEcGYULXYOv_A2hY9EbNy0dSreJzYsY5wMyipC1sK40M">
+</div>
+</section>
+<!-- Category Grid -->
+<section class="px-container-margin mt-xl">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">分类</h2>
+<div class="grid grid-cols-4 gap-sm">
+<!-- Dining -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">restaurant</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">餐饮</span>
+</button>
+<!-- Transport -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">commute</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">交通</span>
+</button>
+<!-- Shopping -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">购物</span>
+</button>
+<!-- Housing -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">home</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">居住</span>
+</button>
+<!-- Entertainment -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">sports_esports</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">娱乐</span>
+</button>
+<!-- Medical -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">medical_services</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">医疗</span>
+</button>
+<!-- Education -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">school</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">教育</span>
+</button>
+<!-- Others -->
+<button class="category-btn group flex flex-col items-center gap-xs" onclick="selectCategory(this)">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-lowest flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 group-[.selected]:bg-primary group-[.selected]:text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">more_horiz</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">其他</span>
+</button>
+</div>
+</section>
+<!-- Details Section (Date & Note) -->
+<section class="px-container-margin mt-xl mb-xl space-y-md">
+<!-- Date Selector -->
+<div class="bg-white/60 p-md rounded-2xl flex items-center justify-between border border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-body-md text-on-surface">日期</span>
+</div>
+<input class="bg-transparent border-none text-right font-body-md text-primary font-bold focus:ring-0" type="date" value="2023-10-27">
+</div>
+<!-- Note Field -->
+<div class="bg-white/60 p-md rounded-2xl flex items-center gap-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder-on-surface-variant/40" placeholder="添加备注..." type="text">
+</div>
+</section>
+<!-- Confirm Button -->
+<footer class="px-container-margin pb-xl">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container h-14 rounded-full text-white font-title-sm text-title-sm kawaii-shadow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">check_circle</span>
+                确认记录
+            </button>
+<!-- Bottom spacing for mobile safe area if needed -->
+<div class="h-safe-bottom"></div>
+</footer>
+<!-- Atmospheric Background Element -->
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-container/10 blur-3xl rounded-full -z-10"></div>
+</main>
+<!-- Success Feedback Ling Ling (Hidden by default, triggered by JS) -->
+<div class="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-500" id="success-overlay">
+<div class="relative">
+<div class="absolute inset-0 animate-ping bg-primary-container/20 rounded-full"></div>
+<img alt="Ling Ling Success" class="w-48 h-48 relative z-10" data-alt="The adorable white bunny mascot Ling Ling jumping for joy with tiny pink hearts floating around its head. Ling Ling has a wide happy smile and paws tucked up against its chest in excitement. The background is a soft, dreamy gradient of peach and lavender. The lighting is bright and cheerful, celebrating a successful financial entry with a professional yet cute kawaii aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFJAL-0D4TJ3gAkK2iKEr5qXIwAC4TsIBXwF51Hu9VrgPtxsgg6iouuUOa2D6mYtuK1j371q5vFcK6fiHxYei1DaS4h9KlwqO4nKHgZr9DFHWJIC1sdDoxrY5LXClUmPDWEmg2hVyJSHqOYEoc8pj_CBEBk5RYrsOG1QAkSloJgR2eNBWTPukxC0ronRLIk9-4cJZNdOXCiUJqVRPlAK-sKXgQWdytcGZRiat4GpcQxX6Wxz0HE0yVqcIMhz_4-A2LNxmeO41fCsc">
+</div>
+<h3 class="mt-lg font-headline-lg text-headline-lg text-primary">记录成功啦！</h3>
+<p class="mt-sm font-body-md text-on-surface-variant">零极已经帮你记在小本本上咯~</p>
+</div>
+<script>
+        function toggleType(type) {
+            const expenseBtn = document.getElementById('toggle-expense');
+            const incomeBtn = document.getElementById('toggle-income');
+            const toggleBg = document.getElementById('toggle-bg');
+
+            if (type === 'expense') {
+                toggleBg.style.left = '4px';
+                expenseBtn.classList.add('text-on-primary-container', 'font-bold');
+                expenseBtn.classList.remove('text-on-surface-variant');
+                incomeBtn.classList.add('text-on-surface-variant');
+                incomeBtn.classList.remove('text-on-primary-container', 'font-bold');
+            } else {
+                toggleBg.style.left = 'calc(50%)';
+                incomeBtn.classList.add('text-on-primary-container', 'font-bold');
+                incomeBtn.classList.remove('text-on-surface-variant');
+                expenseBtn.classList.add('text-on-surface-variant');
+                expenseBtn.classList.remove('text-on-primary-container', 'font-bold');
+            }
+        }
+
+        function selectCategory(el) {
+            // Remove selection from others
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            // Add to current
+            el.classList.add('selected');
+            
+            // Subtle haptic feel
+            el.style.transform = 'scale(0.9)';
+            setTimeout(() => el.style.transform = '', 100);
+        }
+
+        // Set default date to today
+        document.querySelector('input[type="date"]').valueAsDate = new Date();
+
+        // Simulate success action
+        document.querySelector('footer button').addEventListener('click', () => {
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            
+            setTimeout(() => {
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 500);
+            }, 2500);
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>灵记 | 收支统计</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-pink": "#FBF5F7",
+                        "primary-container": "#ff85a2",
+                        "tertiary": "#8d4d38",
+                        "on-error-container": "#93000a",
+                        "background": "#fff8f8",
+                        "primary": "#a03a57",
+                        "tertiary-container": "#e7977e",
+                        "outline-variant": "#dbc0c4",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffd9e1",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "surface": "#fff8f8",
+                        "bg-soft": "#FFEEF2",
+                        "surface-container-low": "#fff0f4",
+                        "secondary-fixed-dim": "#fdb2c5",
+                        "primary-fixed-dim": "#ffb1c1",
+                        "on-secondary-container": "#7a4151",
+                        "inverse-primary": "#ffb1c1",
+                        "on-secondary-fixed-variant": "#6c3546",
+                        "accent-lavender": "#C5A3D9",
+                        "inverse-on-surface": "#ffecf1",
+                        "chart-transport": "#9EB7D4",
+                        "surface-variant": "#f7dbe5",
+                        "chart-education": "#F9E4B7",
+                        "tertiary-fixed": "#ffdbd0",
+                        "secondary": "#884c5d",
+                        "on-primary-container": "#771a38",
+                        "on-tertiary-container": "#672f1c",
+                        "on-background": "#26171e",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#3f0017",
+                        "primary-fixed": "#ffd9df",
+                        "surface-container": "#ffe8ef",
+                        "accent-mint": "#A8D8CA",
+                        "surface-bright": "#fff8f8",
+                        "on-secondary-fixed": "#370a1b",
+                        "secondary-container": "#fdb2c5",
+                        "on-tertiary-fixed-variant": "#713623",
+                        "on-surface": "#26171e",
+                        "surface-container-highest": "#f7dbe5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#390c01",
+                        "on-primary-fixed-variant": "#812240",
+                        "on-surface-variant": "#554245",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#3d2c33",
+                        "accent-coral": "#FF7B89",
+                        "on-secondary": "#ffffff",
+                        "outline": "#887175",
+                        "surface-dim": "#eed3dc",
+                        "surface-container-high": "#fde1ea",
+                        "surface-tint": "#a03a57",
+                        "chart-housing": "#F0D5BE"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "container-margin": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Be Vietnam Pro"],
+                        "label-numeric": ["Plus Jakarta Sans"],
+                        "title-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-numeric": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(251, 245, 247, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 133, 162, 0.1);
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dbc0c4;
+            border-radius: 10px;
+        }
+        /* State Utility Classes */
+        .btn-toggle-active {
+            background-color: #ff85a2 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(255, 133, 162, 0.3);
+        }
+        .btn-toggle-inactive {
+            background-color: #FFEEF2 !important;
+            color: #3d2c33 !important;
+        }
+        .tab-content {
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .tab-content.hidden {
+            display: none !important;
+            opacity: 0;
+            transform: scale(0.98);
+        }
+        .tab-content.active-flex {
+            display: flex !important;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .tab-content.active-grid {
+            display: grid !important;
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary/20">
+<!-- Sidebar (Desktop) -->
+<aside class="hidden lg:flex fixed left-0 top-0 h-screen w-64 flex-col p-md z-40 bg-surface-pink border-r border-outline-variant/30 shadow-[0_4px_16px_rgba(255,133,162,0.15)] rounded-r-xl">
+<div class="flex flex-col items-center mb-xl">
+<div class="relative mb-sm">
+<img alt="Ling Ling Mascot" class="w-20 h-20 rounded-full border-4 border-white" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4"/>
+<div class="absolute -bottom-1 -right-1 bg-accent-mint w-6 h-6 rounded-full border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-white" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary">灵记</h1>
+<p class="text-body-sm text-on-surface-variant font-medium">Happy Tracking!</p>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<a class="flex items-center gap-sm text-on-surface-variant hover:bg-primary/10 rounded-full px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-caps font-label-caps uppercase tracking-wider">主面板</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant hover:bg-primary/10 rounded-full px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-label-caps font-label-caps uppercase tracking-wider">账单</span>
+</a>
+<a class="flex items-center gap-sm bg-primary-container text-on-primary-container rounded-full px-md py-sm shadow-sm transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="text-label-caps font-label-caps uppercase tracking-wider">统计</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant hover:bg-primary/10 rounded-full px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-caps font-label-caps uppercase tracking-wider">设置</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-xs mb-md">
+<a class="flex items-center gap-sm text-on-surface-variant hover:text-primary px-md py-xs transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="text-body-sm">帮助</span></a>
+<a class="flex items-center gap-sm text-on-surface-variant hover:text-error px-md py-xs transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="text-body-sm">退出登录</span></a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pb-20 px-container-margin lg:pl-72 max-w-7xl mx-auto pt-8">
+<!-- Header Section -->
+<section class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-primary mb-xs">收支统计</h1>
+<p class="text-body-md text-on-surface-variant">来看看最近的财务状况吧，灵灵觉得你表现得很棒哦！✨</p>
+</div>
+<!-- Time Range Picker -->
+<div class="flex p-1 bg-surface-container-high rounded-full w-fit">
+<button class="btn-toggle-active px-md py-sm rounded-full text-body-sm font-bold transition-all duration-300" id="btn-week">本周</button>
+<button class="btn-toggle-inactive px-md py-sm rounded-full text-body-sm font-medium transition-all duration-300" id="btn-month">本月</button>
+</div>
+</section>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md mb-lg">
+<!-- Total Income -->
+<div class="p-md rounded-2xl bg-white shadow-[0_2px_8px_rgba(255,133,162,0.10)] flex items-center gap-md border border-accent-mint/20 relative overflow-hidden">
+<div class="w-14 h-14 bg-accent-mint/20 rounded-2xl flex items-center justify-center text-accent-mint">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">总收入</p>
+<p class="text-headline-md font-headline-md text-on-surface" id="stat-income">¥ 12,450.00</p>
+</div>
+</div>
+<!-- Total Expense -->
+<div class="p-md rounded-2xl bg-white shadow-[0_2px_8px_rgba(255,133,162,0.10)] flex items-center gap-md border border-accent-coral/20 relative overflow-hidden">
+<div class="w-14 h-14 bg-accent-coral/20 rounded-2xl flex items-center justify-center text-accent-coral">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<div>
+<p class="text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">总支出</p>
+<p class="text-headline-md font-headline-md text-on-surface" id="stat-expense">¥ 4,821.50</p>
+</div>
+</div>
+<!-- Mascot Message -->
+<div class="p-md rounded-2xl bg-surface-pink shadow-[0_4px_16px_rgba(255,133,162,0.15)] flex items-center gap-md border border-primary/10">
+<div class="relative">
+<img alt="灵灵" class="w-14 h-14 animate-float" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4"/>
+</div>
+<div>
+<p class="text-title-sm font-title-sm text-primary">灵灵为你感到骄傲！</p>
+<p class="text-body-sm text-on-surface-variant leading-tight">回顾一天的支出是很好的睡前习惯。晚安！🌙</p>
+</div>
+</div>
+</div>
+<!-- Main Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-lg mb-xl">
+<!-- Trend Chart -->
+<div class="lg:col-span-3 bg-white p-lg rounded-[24px] shadow-[0_2px_8px_rgba(255,133,162,0.10)] border border-outline-variant/30">
+<div class="flex items-center gap-base mb-xl">
+<span class="w-2 h-6 bg-primary rounded-full"></span>
+<h2 class="text-title-sm font-title-sm" id="chart-title">消费趋势 (最近7天)</h2>
+</div>
+<div class="h-64 w-full relative">
+<!-- Week View -->
+<div class="tab-content active-flex absolute inset-0 items-end justify-between px-2" id="chart-week">
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container/30 rounded-t-full h-[40%] transition-all duration-500" id="bar-mon"></div><span class="text-[10px] opacity-60">周一</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container/30 rounded-t-full h-[55%] transition-all duration-500" id="bar-tue"></div><span class="text-[10px] opacity-60">周二</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container rounded-t-full h-[85%] transition-all duration-500" id="bar-wed"></div><span class="text-[10px] text-primary font-bold">周三</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container/30 rounded-t-full h-[30%] transition-all duration-500" id="bar-thu"></div><span class="text-[10px] opacity-60">周四</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container/30 rounded-t-full h-[70%] transition-all duration-500" id="bar-fri"></div><span class="text-[10px] opacity-60">周五</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container/30 rounded-t-full h-[60%] transition-all duration-500" id="bar-sat"></div><span class="text-[10px] opacity-60">周六</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-4 bg-primary-container/30 rounded-t-full h-[50%] transition-all duration-500" id="bar-sun"></div><span class="text-[10px] opacity-60">周日</span></div>
+</div>
+<!-- Month View -->
+<div class="tab-content hidden absolute inset-0 items-end justify-around px-4" id="chart-month">
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-10 bg-primary-container/40 rounded-t-full h-[65%] transition-all duration-500"></div><span class="text-[10px] opacity-60">W1</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-10 bg-primary-container rounded-t-full h-[90%] transition-all duration-500"></div><span class="text-[10px] text-primary font-bold">W2</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-10 bg-primary-container/40 rounded-t-full h-[55%] transition-all duration-500"></div><span class="text-[10px] opacity-60">W3</span></div>
+<div class="flex flex-col items-center gap-xs flex-1"><div class="w-10 bg-primary-container/40 rounded-t-full h-[75%] transition-all duration-500"></div><span class="text-[10px] opacity-60">W4</span></div>
+</div>
+</div>
+</div>
+<!-- Pie Chart Simulation -->
+<div class="lg:col-span-2 bg-white p-lg rounded-[24px] shadow-[0_2px_8px_rgba(255,133,162,0.10)] border border-outline-variant/30">
+<div class="flex items-center gap-base mb-xl">
+<span class="w-2 h-6 bg-accent-lavender rounded-full"></span>
+<h2 class="text-title-sm font-title-sm">分类占比</h2>
+</div>
+<div class="flex flex-col items-center justify-center h-full pb-md">
+<div class="relative w-40 h-40 mb-lg">
+<div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent-lavender via-accent-coral to-accent-mint p-6">
+<div class="bg-white w-full h-full rounded-full flex flex-col items-center justify-center shadow-inner">
+<span class="text-[10px] opacity-60">日均支出</span>
+<span class="text-title-sm font-bold text-primary" id="avg-expense">¥ 688</span>
+</div>
+</div>
+</div>
+<div class="tab-content active-grid grid grid-cols-2 gap-x-8 gap-y-2 w-full" id="legend-week">
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-accent-coral"></div> 餐饮 45%</div>
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-accent-lavender"></div> 购物 20%</div>
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-chart-transport"></div> 交通 15%</div>
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-accent-mint"></div> 其他 20%</div>
+</div>
+<div class="tab-content hidden grid grid-cols-2 gap-x-8 gap-y-2 w-full" id="legend-month">
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-accent-coral"></div> 房租 40%</div>
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-accent-lavender"></div> 餐饮 25%</div>
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-chart-transport"></div> 购物 20%</div>
+<div class="flex items-center gap-2 text-body-sm"><div class="w-2 h-2 rounded-full bg-accent-mint"></div> 其他 15%</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insights & Budget -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="glass-card p-lg rounded-[24px]">
+<h3 class="text-title-sm font-title-sm mb-md flex items-center gap-base">
+<span class="material-symbols-outlined text-accent-coral">lightbulb</span>支出洞察
+            </h3>
+<div class="space-y-md" id="insights-container">
+<div class="flex gap-md items-start">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center"><span class="material-symbols-outlined text-primary">restaurant</span></div>
+<div>
+<p class="text-body-md font-bold">下馆子太频繁了吗？</p>
+<p class="text-body-sm text-on-surface-variant">你本周在外卖上的支出比上周增加了25%。今天要不要试着在家里做顿简单的饭呢？🍱</p>
+</div>
+</div>
+<div class="flex gap-md items-start">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center"><span class="material-symbols-outlined text-primary">verified</span></div>
+<div>
+<p class="text-body-md font-bold">订阅管理得很棒！</p>
+<p class="text-body-sm text-on-surface-variant">成功退订了2项不常用的会员。灵灵被你的精打细算感动了！</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-variant/30 p-lg rounded-[24px] border border-dashed border-primary/20 flex flex-col items-center justify-center text-center">
+<h3 class="text-title-sm font-title-sm text-primary mb-xs">预算目标</h3>
+<p class="text-body-sm text-on-surface-variant mb-md px-lg" id="budget-desc">你已经消耗了本周预算的 85%。周末只剩下 ¥320 的额度了哦！</p>
+<div class="w-full bg-white/50 rounded-full h-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-700" id="budget-bar" style="width: 85%;"></div>
+</div>
+</div>
+</section>
+</main>
+<script>
+    const btnWeek = document.getElementById('btn-week');
+    const btnMonth = document.getElementById('btn-month');
+    
+    // Elements to update
+    const incomeStat = document.getElementById('stat-income');
+    const expenseStat = document.getElementById('stat-expense');
+    const chartTitle = document.getElementById('chart-title');
+    const avgExpense = document.getElementById('avg-expense');
+    const budgetDesc = document.getElementById('budget-desc');
+    const budgetBar = document.getElementById('budget-bar');
+    
+    // Tab containers
+    const chartWeek = document.getElementById('chart-week');
+    const chartMonth = document.getElementById('chart-month');
+    const legendWeek = document.getElementById('legend-week');
+    const legendMonth = document.getElementById('legend-month');
+
+    function setActiveTab(period) {
+        if (period === 'week') {
+            // Button Styles
+            btnWeek.classList.remove('btn-toggle-inactive');
+            btnWeek.classList.add('btn-toggle-active');
+            btnMonth.classList.remove('btn-toggle-active');
+            btnMonth.classList.add('btn-toggle-inactive');
+
+            // Data Updates
+            incomeStat.innerText = '¥ 12,450.00';
+            expenseStat.innerText = '¥ 4,821.50';
+            chartTitle.innerText = '消费趋势 (最近7天)';
+            avgExpense.innerText = '¥ 688';
+            budgetDesc.innerText = '你已经消耗了本周预算的 85%。周末只剩下 ¥320 的额度了哦！';
+            budgetBar.style.width = '85%';
+
+            // View Updates
+            chartWeek.classList.remove('hidden');
+            chartWeek.classList.add('active-flex');
+            chartMonth.classList.add('hidden');
+            chartMonth.classList.remove('active-flex');
+            
+            legendWeek.classList.remove('hidden');
+            legendWeek.classList.add('active-grid');
+            legendMonth.classList.add('hidden');
+            legendMonth.classList.remove('active-grid');
+
+        } else {
+            // Button Styles
+            btnMonth.classList.remove('btn-toggle-inactive');
+            btnMonth.classList.add('btn-toggle-active');
+            btnWeek.classList.remove('btn-toggle-active');
+            btnWeek.classList.add('btn-toggle-inactive');
+
+            // Data Updates
+            incomeStat.innerText = '¥ 58,900.00';
+            expenseStat.innerText = '¥ 18,320.00';
+            chartTitle.innerText = '消费趋势 (本月概览)';
+            avgExpense.innerText = '¥ 610';
+            budgetDesc.innerText = '本月预算已消耗 62%。加油，这个月可以存下更多钱！✨';
+            budgetBar.style.width = '62%';
+
+            // View Updates
+            chartWeek.classList.add('hidden');
+            chartWeek.classList.remove('active-flex');
+            chartMonth.classList.remove('hidden');
+            chartMonth.classList.add('active-flex');
+
+            legendWeek.classList.add('hidden');
+            legendWeek.classList.remove('active-grid');
+            legendMonth.classList.remove('hidden');
+            legendMonth.classList.add('active-grid');
+        }
+    }
+
+    btnWeek.addEventListener('click', () => setActiveTab('week'));
+    btnMonth.addEventListener('click', () => setActiveTab('month'));
+</script>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md flex justify-around items-center py-base px-md rounded-t-3xl shadow-[0_-4px_16px_rgba(255,133,162,0.1)]">
+<button class="flex flex-col items-center gap-xs p-base text-on-surface-variant"><span class="material-symbols-outlined">home</span><span class="text-[10px]">首页</span></button>
+<button class="flex flex-col items-center gap-xs p-base text-on-surface-variant"><span class="material-symbols-outlined">receipt_long</span><span class="text-[10px]">账单</span></button>
+<div class="relative -top-4"><button class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg"><span class="material-symbols-outlined">add</span></button></div>
+<button class="flex flex-col items-center gap-xs p-base text-primary font-bold"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span><span class="text-[10px]">统计</span></button>
+<button class="flex flex-col items-center gap-xs p-base text-on-surface-variant"><span class="material-symbols-outlined">person</span><span class="text-[10px]">我的</span></button>
+</nav>
+</body></html>

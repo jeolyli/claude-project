@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>个人中心 - 灵记 (LingJi)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb1c1",
+                        "background": "#fff8f8",
+                        "accent-mint": "#A8D8CA",
+                        "surface": "#fff8f8",
+                        "secondary": "#884c5d",
+                        "inverse-surface": "#3d2c33",
+                        "chart-housing": "#F0D5BE",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "secondary-container": "#fdb2c5",
+                        "on-surface": "#26171e",
+                        "bg-soft": "#FFEEF2",
+                        "primary-fixed": "#ffd9df",
+                        "on-primary-fixed-variant": "#812240",
+                        "tertiary-container": "#e7977e",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ff85a2",
+                        "on-secondary-container": "#7a4151",
+                        "outline-variant": "#dbc0c4",
+                        "secondary-fixed": "#ffd9e1",
+                        "accent-coral": "#FF7B89",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#390c01",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#3f0017",
+                        "inverse-primary": "#ffb1c1",
+                        "chart-education": "#F9E4B7",
+                        "on-secondary-fixed": "#370a1b",
+                        "secondary-fixed-dim": "#fdb2c5",
+                        "on-tertiary-fixed-variant": "#713623",
+                        "inverse-on-surface": "#ffecf1",
+                        "on-background": "#26171e",
+                        "surface-dim": "#eed3dc",
+                        "on-tertiary-container": "#672f1c",
+                        "surface-container-low": "#fff0f4",
+                        "surface-tint": "#a03a57",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#554245",
+                        "surface-variant": "#f7dbe5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#771a38",
+                        "surface-container": "#ffe8ef",
+                        "surface-container-highest": "#f7dbe5",
+                        "tertiary": "#8d4d38",
+                        "accent-lavender": "#C5A3D9",
+                        "surface-bright": "#fff8f8",
+                        "primary": "#a03a57",
+                        "surface-container-high": "#fde1ea",
+                        "chart-transport": "#9EB7D4",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-secondary-fixed-variant": "#6c3546",
+                        "outline": "#887175",
+                        "surface-pink": "#FBF5F7",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kawaii-shadow {
+            box-shadow: 0 4px 16px rgba(255, 133, 162, 0.12);
+        }
+        .pill-button {
+            border-radius: 9999px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pill-button:active {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-['Be_Vietnam_Pro'] selection:bg-primary-fixed-dim">
+<div class="relative flex min-h-screen w-full flex-col bg-background group/design-root overflow-x-hidden" style="font-family: &quot;Plus Jakarta Sans&quot;, &quot;Noto Sans&quot;, sans-serif;">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5 px-4 md:px-10 lg:px-40">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<!-- Header -->
+
+<div class="flex h-full min-h-[700px] flex-col md:flex-row bg-background">
+<!-- Sidebar Navigation -->
+<aside class="w-full md:w-64 flex flex-col gap-2 p-4 border-r border-outline-variant/30"><!-- Brand Area -->
+<div class="flex flex-col items-center gap-2 px-4 py-8 mb-4">
+    <div class="size-16 flex items-center justify-center overflow-hidden rounded-full"><img src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4" alt="Logo" class="w-full h-full object-cover"></div>
+    <h1 class="text-on-surface text-xl font-bold tracking-tight">灵记</h1>
+    <p class="text-secondary text-xs font-medium uppercase tracking-wider">Happy Tracking!</p>
+</div>
+
+<!-- Navigation Items -->
+<nav class="flex flex-col gap-2 flex-1">
+    <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-surface-container transition-colors group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">dashboard</span>
+        <p class="text-on-surface text-sm font-medium">主面板</p>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-surface-container transition-colors group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">receipt_long</span>
+        <p class="text-on-surface text-sm font-medium">账单</p>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-surface-container transition-colors group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">bar_chart</span>
+        <p class="text-on-surface text-sm font-medium">统计</p>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-container/20 text-on-primary-container">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+        <p class="text-sm font-bold">设置</p>
+    </div>
+</nav>
+
+<!-- Footer -->
+<div class="mt-auto p-4">
+    <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-surface-container transition-colors group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">help</span>
+        <p class="text-on-surface text-sm font-medium">帮助中心</p>
+    </div>
+</div></aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8">
+<!-- Profile Card -->
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-surface-pink rounded-xl kawaii-shadow mb-8 border border-outline-variant/20" style="transform: translateY(0px); transition: transform 0.3s;">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 md:size-32 border-4 border-white shadow-sm" data-alt="A cute anime style girl with pink hair wearing a soft cream sweater, holding a digital wallet icon. The illustration is flat and modern with warm, pastel tones and a soft glow, perfectly matching a kawaii aesthetic. High key lighting with soft pink accents." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuATir-BWkmIrLHcO65jbkPYon4_2bD8xGZoqE7xDnV5FANwDGKkEZuCRufaWSVmv6v3KurI9ZL8PlCDiu78DIK2kb4FKyXHxbOvhGRbTw9Sxj_8UQDnAdaIBQKPX84vfD9yw3o2KL6a_kWVICR0zdpN5cVo1QgC90UNTJYCzZGOyJzj9A8XGL7x6gHwSAbBVA5l5KhVaTawXvVBa2lUAEFUUlwI-7YOVVbPknLqlNAyrtU2h5taKI_LH-_q4Ehe2HH8oNHGwGS3zm4&quot;);">
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-white p-1 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</div>
+</div>
+<div class="flex flex-col items-center md:items-start flex-1 text-center md:text-left">
+<h1 class="text-on-surface text-2xl font-bold tracking-tight">玲玲酱 (Ling Ling)</h1>
+<p class="text-secondary text-sm md:text-base font-normal mb-4">理财达人 · 已坚持记账 365 天</p>
+<button class="pill-button px-6 py-2 bg-primary text-on-primary text-sm font-bold shadow-sm hover:opacity-90 active:scale-95 transition-all">
+                                    编辑个人资料
+                                </button>
+</div>
+<div class="flex flex-col items-center justify-center p-4 bg-white/60 rounded-2xl min-w-[120px] border border-outline-variant/10">
+<p class="text-secondary text-xs font-medium mb-1 uppercase tracking-wider">本月节约</p>
+<p class="text-on-surface text-2xl font-bold font-['Plus_Jakarta_Sans']">¥1,280</p>
+</div>
+</div>
+<!-- System Preferences -->
+<section class="mb-8">
+<h2 class="text-on-surface text-xl font-bold mb-4 px-2">系统偏好</h2>
+<div class="bg-surface-container-lowest rounded-2xl kawaii-shadow overflow-hidden border border-outline-variant/10" style="transform: translateY(0px); transition: transform 0.3s;">
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-accent-lavender/20 text-accent-lavender">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<span class="text-on-surface font-medium">暗黑模式</span>
+</div>
+<div class="w-12 h-6 bg-surface-container-highest rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 size-4 bg-white rounded-full transition-all"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-accent-mint/20 text-accent-mint">
+<span class="material-symbols-outlined">language</span>
+</div>
+<span class="text-on-surface font-medium">语言设置</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="text-sm">简体中文</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-accent-coral/20 text-accent-coral">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<span class="text-on-surface font-medium">消息通知</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Financial Settings -->
+<section class="mb-8">
+<h2 class="text-on-surface text-xl font-bold mb-4 px-2">财务设置</h2>
+<div class="bg-surface-container-lowest rounded-2xl kawaii-shadow overflow-hidden border border-outline-variant/10" style="transform: translateY(0px); transition: transform 0.3s;">
+<div class="flex items-center justify-between p-4 border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="text-on-surface font-medium">本月预算上限</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-bold text-primary">¥5,000.00</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-chart-housing/20 text-tertiary">
+<span class="material-symbols-outlined">category</span>
+</div>
+<span class="text-on-surface font-medium">支出类别管理</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Data & Security -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section>
+<h2 class="text-on-surface text-xl font-bold mb-4 px-2">数据管理</h2>
+<div class="bg-surface-container-lowest rounded-2xl kawaii-shadow overflow-hidden border border-outline-variant/10">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<span class="text-on-surface font-medium">导出账单</span>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="text-on-surface font-medium">导入数据</span>
+<span class="material-symbols-outlined text-on-surface-variant">upload</span>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-on-surface text-xl font-bold mb-4 px-2">账号安全</h2>
+<div class="bg-surface-container-lowest rounded-2xl kawaii-shadow overflow-hidden border border-outline-variant/10">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<span class="text-on-surface font-medium">修改登录密码</span>
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="text-on-surface font-medium">隐私设置</span>
+<span class="material-symbols-outlined text-on-surface-variant">visibility_off</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Account Actions -->
+<div class="mt-12 flex flex-col items-center gap-4">
+<button class="w-full max-w-sm pill-button py-3 px-6 bg-surface-container-high text-on-surface font-semibold hover:bg-surface-variant transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">switch_account</span>
+                                切换账号
+                            </button>
+<button class="w-full max-w-sm pill-button py-3 px-6 bg-error-container text-on-error-container font-semibold hover:bg-error/10 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+                                退出登录
+                            </button>
+<p class="text-outline text-xs mt-4">灵记 LingJi Finance v2.4.0 • 记录生活中的每一分确幸</p>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Simple micro-interaction for toggle switch
+    document.querySelector('.w-12.h-6').addEventListener('click', function() {
+        const thumb = this.querySelector('div');
+        const isActive = thumb.classList.contains('translate-x-6');
+        if(isActive) {
+            thumb.classList.remove('translate-x-6', 'bg-primary');
+            thumb.classList.add('left-1', 'bg-white');
+            this.classList.remove('bg-primary-container');
+            this.classList.add('bg-surface-container-highest');
+        } else {
+            thumb.classList.add('translate-x-6', 'bg-primary');
+            thumb.classList.remove('left-1', 'bg-white');
+            this.classList.add('bg-primary-container');
+            this.classList.remove('bg-surface-container-highest');
+        }
+    });
+
+    // Add gentle hover animations to all cards
+    const cards = document.querySelectorAll('.kawaii-shadow');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-2px)';
+            card.style.transition = 'transform 0.3s ease';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+
+
+
+
+</body></html>

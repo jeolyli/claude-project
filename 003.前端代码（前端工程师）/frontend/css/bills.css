@@ -1,0 +1,243 @@
+/* ===== 灵记 - 账单页样式 ===== */
+
+.bills-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 搜索框 */
+.bills-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bills-search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--color-neutral-400);
+  pointer-events: none;
+  font-size: 18px;
+}
+
+.bills-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px 0 40px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-neutral-200);
+  background: white;
+  font-size: 14px;
+  color: var(--color-neutral-900);
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.bills-search-input:focus { border-color: var(--color-primary-300); }
+.bills-search-input::placeholder { color: var(--color-neutral-400); }
+
+/* 时间分组 */
+.bills-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bills-group-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-neutral-400);
+  padding-left: 4px;
+}
+
+.bills-list {
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* 账单项 */
+.bills-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #FFF0F3;
+}
+
+.bills-item:last-child { border-bottom: none; }
+
+.bills-item-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--color-primary-100);
+  flex-shrink: 0;
+}
+
+.bills-item-info { flex: 1; min-width: 0; }
+
+.bills-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.bills-item-category { font-size: 14px; font-weight: 500; color: var(--color-neutral-900); }
+
+.bills-item-amount {
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.bills-amount-expense { color: var(--color-neutral-900); }
+.bills-amount-income { color: #4DB89E; }
+
+.bills-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bills-item-note { font-size: 12px; color: var(--color-neutral-400); }
+.bills-item-date { font-size: 12px; color: var(--color-neutral-400); }
+
+/* ===== 筛选条件 ===== */
+.bills-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.bills-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #FFF0F3;
+}
+
+.bills-filter-row:last-child {
+  border-bottom: none;
+}
+
+.bills-filter-row-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--color-neutral-400);
+}
+
+.bills-filter-row-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.bills-filter-row-chips--scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+
+.bills-filter-row-chips--scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* 胶囊按钮 */
+.bills-pill {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 16px;
+  border-radius: var(--radius-2xl);
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--color-primary-50);
+  color: var(--color-neutral-700);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bills-pill:hover {
+  background: var(--color-primary-100);
+  color: var(--color-primary-400);
+}
+
+.bills-pill--active {
+  background: var(--color-primary-400);
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 133, 162, 0.3);
+}
+
+.bills-pill--active:hover {
+  background: var(--color-primary-400);
+  color: white;
+}
+
+/* 日期范围 */
+.bills-date-range {
+  padding: 14px 16px;
+}
+
+.bills-date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.bills-date-input {
+  flex: 1;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-neutral-200);
+  background: var(--color-primary-50);
+  font-size: 13px;
+  color: var(--color-neutral-900);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.bills-date-input:focus {
+  border-color: var(--color-primary-400);
+}
+
+/* 结果统计 */
+.bills-result-info {
+  font-size: 12px;
+  color: var(--color-neutral-400);
+  padding: 0 4px;
+}
+
+.bills-result-info span {
+  font-weight: 600;
+  color: var(--color-primary-400);
+}

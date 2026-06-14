@@ -1,0 +1,506 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>LingJi (灵记) Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .ling-ling-glow {
+            filter: drop-shadow(0 0 12px rgba(255, 133, 162, 0.3));
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #A8D8CA 0%, #FF7B89 100%);
+        }
+        .glass-card {
+            background: rgba(251, 245, 247, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dbc0c4;
+            border-radius: 10px;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        .animate-heartbeat {
+            animation: heartbeat 0.8s ease-in-out 2;
+        }
+        @keyframes bounce-tilt {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        .animate-bounce-tilt {
+            animation: bounce-tilt 0.6s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-pink": "#FBF5F7",
+                        "primary-container": "#ff85a2",
+                        "tertiary": "#8d4d38",
+                        "on-error-container": "#93000a",
+                        "background": "#fff8f8",
+                        "primary": "#a03a57",
+                        "tertiary-container": "#e7977e",
+                        "outline-variant": "#dbc0c4",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffd9e1",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "surface": "#fff8f8",
+                        "bg-soft": "#FFEEF2",
+                        "surface-container-low": "#fff0f4",
+                        "secondary-fixed-dim": "#fdb2c5",
+                        "primary-fixed-dim": "#ffb1c1",
+                        "on-secondary-container": "#7a4151",
+                        "inverse-primary": "#ffb1c1",
+                        "on-secondary-fixed-variant": "#6c3546",
+                        "accent-lavender": "#C5A3D9",
+                        "inverse-on-surface": "#ffecf1",
+                        "chart-transport": "#9EB7D4",
+                        "surface-variant": "#f7dbe5",
+                        "chart-education": "#F9E4B7",
+                        "tertiary-fixed": "#ffdbd0",
+                        "secondary": "#884c5d",
+                        "on-primary-container": "#771a38",
+                        "on-tertiary-container": "#672f1c",
+                        "on-background": "#26171e",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#3f0017",
+                        "primary-fixed": "#ffd9df",
+                        "surface-container": "#ffe8ef",
+                        "accent-mint": "#A8D8CA",
+                        "surface-bright": "#fff8f8",
+                        "on-secondary-fixed": "#370a1b",
+                        "secondary-container": "#fdb2c5",
+                        "on-tertiary-fixed-variant": "#713623",
+                        "on-surface": "#26171e",
+                        "surface-container-highest": "#f7dbe5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#390c01",
+                        "on-primary-fixed-variant": "#812240",
+                        "on-surface-variant": "#554245",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#3d2c33",
+                        "accent-coral": "#FF7B89",
+                        "on-secondary": "#ffffff",
+                        "outline": "#887175",
+                        "surface-dim": "#eed3dc",
+                        "surface-container-high": "#fde1ea",
+                        "surface-tint": "#a03a57",
+                        "chart-housing": "#F0D5BE"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "container-margin": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Be Vietnam Pro"],
+                        "label-numeric": ["Plus Jakarta Sans"],
+                        "title-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-numeric": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen font-body-md overflow-x-hidden">
+<!-- Top AppBar (Mobile/Tablet) -->
+<header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md px-container-margin py-base flex justify-between items-center shadow-[0_2px_8px_rgba(255,133,162,0.10)]">
+<div class="flex items-center gap-base">
+<img alt="Ling Ling" class="w-10 h-10 rounded-full cursor-pointer active:scale-95 transition-transform" id="mobile-mascot" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+<span class="text-headline-lg font-headline-lg text-primary tracking-tight">灵记</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-pink text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-surface-pink border-r border-outline-variant/30 flex-col p-md z-40 shadow-[0_4px_16px_rgba(255,133,162,0.15)]">
+<div class="flex flex-col items-center mb-xl">
+<div class="relative mb-sm group">
+<img alt="Ling Ling Mascot" class="w-20 h-20 rounded-full ling-ling-glow border-4 border-white cursor-pointer active:scale-95 transition-transform" id="desktop-mascot" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+<div class="absolute -bottom-1 -right-1 bg-accent-mint w-6 h-6 rounded-full border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-white" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary">灵记</h1>
+<p class="text-body-sm text-on-surface-variant font-medium">Happy Tracking!</p>
+</div>
+<nav class="flex flex-col gap-xs flex-grow" id="side-nav"><a class="nav-item flex items-center gap-sm bg-primary-container text-on-primary-container rounded-full px-md py-sm shadow-sm transition-all duration-200 active:scale-95" data-page="home" href="{{DATA:SCREEN:SCREEN_6}}"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span><span class="text-label-caps font-label-caps uppercase tracking-wider">主面板</span></a><a class="nav-item flex items-center gap-sm text-on-surface-variant hover:bg-primary/10 rounded-full px-md py-sm transition-all active:scale-95" data-page="budget" href="{{DATA:SCREEN:SCREEN_25}}"><span class="material-symbols-outlined">account_balance_wallet</span><span class="text-label-caps font-label-caps uppercase tracking-wider">账单</span></a><a class="nav-item flex items-center gap-sm text-on-surface-variant hover:bg-primary/10 rounded-full px-md py-sm transition-all active:scale-95" data-page="stats" href="{{DATA:SCREEN:SCREEN_27}}"><span class="material-symbols-outlined">leaderboard</span><span class="text-label-caps font-label-caps uppercase tracking-wider">统计</span></a><a class="nav-item flex items-center gap-sm text-on-surface-variant hover:bg-primary/10 rounded-full px-md py-sm transition-all active:scale-95" data-page="settings" href="{{DATA:SCREEN:SCREEN_23}}"><span class="material-symbols-outlined">settings</span><span class="text-label-caps font-label-caps uppercase tracking-wider">设置</span></a></nav>
+<a href="{{DATA:SCREEN:SCREEN_31}}" class="mt-auto w-full py-md rounded-2xl bg-gradient-to-r from-primary-container to-accent-coral text-white font-bold flex items-center justify-center gap-xs shadow-[0_4px_16px_rgba(255,133,162,0.25)] hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">add</span>
+<span class="">添加收支</span>
+</a>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 md:pt-10 px-container-margin pb-32 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Hero section: Budget Kanban -->
+<section class="lg:col-span-8">
+<div class="bg-surface-pink rounded-3xl p-lg shadow-[0_2px_8px_rgba(255,133,162,0.10)] border border-outline-variant/20 relative overflow-hidden cursor-pointer active:scale-[0.99] transition-transform group" onclick="openBudgetModal()">
+<!-- Background Atmospheric Glow -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-fixed-dim/20 blur-[80px] rounded-full"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-xs">本月总预算</h2>
+<p class="text-body-sm text-on-surface-variant">2023年10月1日 - 10月31日</p>
+</div>
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-primary bg-primary/10 px-sm py-xs rounded-full group-hover:bg-primary group-hover:text-white transition-colors">进行中</span>
+</div>
+</div>
+<div class="flex items-end gap-sm mb-base">
+<span class="text-[40px] font-bold text-primary leading-none">¥3,240</span>
+<span class="text-body-md text-on-surface-variant mb-xs">/ ¥5,000</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-4 bg-white/50 rounded-full overflow-hidden mb-lg shadow-inner">
+<div class="progress-gradient h-full rounded-full transition-all duration-1000 ease-out" style="width: 64.8%;"></div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-white/40 p-md rounded-2xl flex flex-col">
+<span class="text-body-sm text-on-surface-variant mb-xs">剩余可用</span>
+<span class="text-title-sm font-title-sm text-on-surface">¥1,760</span>
+</div>
+<div class="bg-white/40 p-md rounded-2xl flex flex-col">
+<span class="text-body-sm text-on-surface-variant mb-xs">今日已花</span>
+<span class="text-title-sm font-title-sm text-primary">¥128.50</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Record Area -->
+<section class="lg:col-span-4" id="quick-record-section">
+<div class="bg-white rounded-3xl p-lg shadow-[0_2px_8px_rgba(255,133,162,0.10)] border border-outline-variant/10 h-full flex flex-col">
+<h3 class="text-title-sm font-title-sm text-on-surface mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+                        快速记账
+                    </h3>
+<div class="relative mb-lg">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-headline-md text-primary font-bold">¥</span>
+<input class="w-full pl-xl pr-md py-md bg-surface-pink border-none rounded-2xl text-headline-md font-bold text-on-surface focus:ring-2 focus:ring-primary-container transition-all" id="record-amount" placeholder="0.00" type="number">
+</div>
+<div class="grid grid-cols-4 gap-sm mb-lg" id="category-btns">
+<button class="flex flex-col items-center gap-xs group active:scale-90 transition-transform">
+<div class="w-12 h-12 rounded-2xl bg-chart-housing/20 text-tertiary flex items-center justify-center group-hover:bg-chart-housing group-hover:text-white transition-all">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<span class="text-body-sm">餐饮</span>
+</button>
+<button class="flex flex-col items-center gap-xs group active:scale-90 transition-transform">
+<div class="w-12 h-12 rounded-2xl bg-chart-transport/20 text-secondary flex items-center justify-center group-hover:bg-chart-transport group-hover:text-white transition-all">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<span class="text-body-sm">交通</span>
+</button>
+<button class="flex flex-col items-center gap-xs group active:scale-90 transition-transform">
+<div class="w-12 h-12 rounded-2xl bg-accent-lavender/20 text-accent-lavender flex items-center justify-center group-hover:bg-accent-lavender group-hover:text-white transition-all">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<span class="text-body-sm">购物</span>
+</button>
+<button class="flex flex-col items-center gap-xs group active:scale-90 transition-transform">
+<div class="w-12 h-12 rounded-2xl bg-accent-mint/20 text-accent-mint flex items-center justify-center group-hover:bg-accent-mint group-hover:text-white transition-all">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<span class="text-body-sm">更多</span>
+</button>
+</div>
+<button class="w-full mt-auto py-md bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95" id="confirm-record">
+                        确认记录
+                    </button>
+</div>
+</section>
+<!-- Recent Transactions & Mascot Interaction -->
+<section class="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="md:col-span-2 bg-white rounded-3xl p-lg shadow-[0_2px_8px_rgba(255,133,162,0.10)]">
+<div class="flex justify-between items-center mb-md">
+<h3 class="text-title-sm font-title-sm text-on-surface">最近交易</h3>
+<a class="text-body-sm text-primary hover:underline active:scale-95 inline-block" href="#" onclick="simulateNavToTransactions()">查看全部</a>
+</div>
+<div class="space-y-sm">
+<!-- Transaction 1 -->
+<div class="flex items-center justify-between p-md rounded-2xl bg-surface-pink hover:translate-x-1 transition-all duration-300 cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-chart-housing/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">coffee</span>
+</div>
+<div>
+<p class="text-body-md font-bold">早午餐咖啡</p>
+<p class="text-body-sm text-on-surface-variant">今天 10:24 · 餐饮</p>
+</div>
+</div>
+<span class="text-label-numeric font-label-numeric text-primary">-¥32.00</span>
+</div>
+<!-- Transaction 2 -->
+<div class="flex items-center justify-between p-md rounded-2xl bg-surface-pink hover:translate-x-1 transition-all duration-300 cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-accent-lavender/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<p class="text-body-md font-bold">超市购物</p>
+<p class="text-body-sm text-on-surface-variant">昨天 18:45 · 购物</p>
+</div>
+</div>
+<span class="text-label-numeric font-label-numeric text-primary">-¥96.50</span>
+</div>
+<!-- Transaction 3 -->
+<div class="flex items-center justify-between p-md rounded-2xl bg-surface-pink hover:translate-x-1 transition-all duration-300 cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-accent-mint/30 flex items-center justify-center text-accent-mint">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="text-body-md font-bold">工资收入</p>
+<p class="text-body-sm text-on-surface-variant">2天前 09:00 · 收入</p>
+</div>
+</div>
+<span class="text-label-numeric font-label-numeric text-accent-mint">+¥12,000.00</span>
+</div>
+</div>
+</div>
+<!-- Ling Ling Interaction Card -->
+<div class="bg-gradient-to-br from-primary-fixed to-secondary-fixed rounded-3xl p-lg relative overflow-hidden flex flex-col items-center justify-center text-center shadow-[0_2px_8px_rgba(255,133,162,0.15)] group cursor-pointer active:scale-[0.98] transition-transform" id="mascot-card">
+<img alt="Ling Ling Mascot" class="w-32 h-32 rounded-full mb-md group-hover:rotate-12 transition-transform duration-500 mascot-img" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+<h4 class="text-title-sm font-title-sm text-on-primary-container mb-xs">做得很棒！</h4>
+<p class="text-body-sm text-on-primary-fixed-variant px-md">本周你省下了 12% 的预算, 玲玲为你感到骄傲!</p>
+<!-- Decorative petals (absolute positioned) -->
+<span class="material-symbols-outlined absolute top-4 right-4 text-primary/20 scale-150" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="material-symbols-outlined absolute bottom-6 left-6 text-primary/20 scale-125" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md flex justify-around items-center px-md py-base shadow-[0_-4px_16px_rgba(255,133,162,0.10)]"><a class="flex flex-col items-center gap-xs text-primary active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_6}}"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span><span class="text-[10px] font-bold">首页</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_25}}"><span class="material-symbols-outlined">receipt_long</span><span class="text-[10px] font-medium">账单</span></a><div class="relative -top-6"><a href="{{DATA:SCREEN:SCREEN_31}}" class="w-14 h-14 bg-gradient-to-tr from-primary to-accent-coral rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/40 active:scale-95 transition-all"><span class="material-symbols-outlined text-[32px]">add</span></a></div><a class="flex flex-col items-center gap-xs text-on-surface-variant active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_27}}"><span class="material-symbols-outlined">leaderboard</span><span class="text-[10px] font-medium">统计</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_23}}"><span class="material-symbols-outlined">person</span><span class="text-[10px] font-medium">我的</span></a></nav>
+<!-- Modals & Toasts -->
+<div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-md hidden opacity-0 transition-opacity duration-300" id="budget-modal">
+<div class="bg-white rounded-3xl w-full max-w-md p-lg shadow-2xl scale-95 transition-transform duration-300" id="budget-modal-content">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="text-headline-md font-headline-md text-primary">预算详情</h3>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-pink text-primary active:scale-90" onclick="closeBudgetModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
+<span class="text-on-surface-variant">周期范围</span>
+<span class="font-medium">2023.10.01 - 2023.10.31</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
+<span class="text-on-surface-variant">预算上限</span>
+<span class="font-medium">¥5,000.00</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
+<span class="text-on-surface-variant">当前已花</span>
+<span class="font-medium text-primary">¥3,240.00</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
+<span class="text-on-surface-variant">预算余量</span>
+<span class="font-medium text-accent-mint">¥1,760.00 (35.2%)</span>
+</div>
+<div class="p-md bg-surface-pink rounded-2xl text-body-sm text-on-primary-fixed-variant leading-relaxed">
+<span class="material-symbols-outlined text-[18px] align-middle mr-xs">info</span>
+                玲玲提示：你本月的支出控制得很好，目前还在安全线内哦！
+            </div>
+</div>
+<button class="w-full mt-lg py-md bg-primary text-white rounded-2xl font-bold active:scale-95 transition-transform" onclick="closeBudgetModal()">
+            了解
+        </button>
+</div>
+</div>
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-[110] pointer-events-none flex flex-col items-center gap-sm hidden" id="success-toast">
+<div class="bg-white rounded-3xl px-lg py-md shadow-2xl flex items-center gap-md border border-primary/10 animate-bounce">
+<img alt="Ling Ling Success" class="w-12 h-12 rounded-full" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+<div>
+<p class="font-bold text-primary">记账成功！</p>
+<p class="text-body-sm text-on-surface-variant">玲玲已经帮你存好啦~</p>
+</div>
+</div>
+</div>
+<script>
+    // 1. Navigation Interaction
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            navItems.forEach(nav => {
+                nav.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                nav.classList.add('text-on-surface-variant');
+                const icon = nav.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+            });
+            item.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+            item.classList.remove('text-on-surface-variant');
+            const icon = item.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+            
+            // Console log for page switching logic readiness
+            console.log(`Navigating to: ${item.dataset.page}`);
+        });
+    });
+
+    // 2. Quick Record Interactivity
+    const recordBtn = document.getElementById('confirm-record');
+    const amountInput = document.getElementById('record-amount');
+    const toast = document.getElementById('success-toast');
+    const interactionMascot = document.querySelector('#mascot-card .mascot-img');
+
+    recordBtn.addEventListener('click', () => {
+        if (!amountInput.value || amountInput.value <= 0) {
+            amountInput.classList.add('ring-2', 'ring-error');
+            setTimeout(() => amountInput.classList.remove('ring-2', 'ring-error'), 500);
+            return;
+        }
+
+        // Success Feedback
+        amountInput.value = '';
+        toast.classList.remove('hidden');
+        interactionMascot.classList.add('animate-heartbeat');
+        
+        setTimeout(() => {
+            toast.classList.add('hidden');
+            interactionMascot.classList.remove('animate-heartbeat');
+        }, 3000);
+    });
+
+    // 3. Budget Modal
+    const budgetModal = document.getElementById('budget-modal');
+    const budgetContent = document.getElementById('budget-modal-content');
+
+    function openBudgetModal() {
+        budgetModal.classList.remove('hidden');
+        setTimeout(() => {
+            budgetModal.classList.remove('opacity-0');
+            budgetContent.classList.remove('scale-95');
+        }, 10);
+    }
+
+    function closeBudgetModal() {
+        budgetModal.classList.add('opacity-0');
+        budgetContent.classList.add('scale-95');
+        setTimeout(() => {
+            budgetModal.classList.add('hidden');
+        }, 300);
+    }
+
+    // 4. Simulate Navigation to SCREEN_3
+    function simulateNavToTransactions() {
+        alert('正在前往“账单记录”页面... (Simulating navigation to SCREEN_3)');
+    }
+
+    // 5. Floating Button / Add Expense Focus
+    function focusQuickRecord() {
+        document.getElementById('quick-record-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        amountInput.focus();
+    }
+
+    // 7. Mascot Interactivity
+    const mascots = [document.getElementById('desktop-mascot'), document.getElementById('mobile-mascot')];
+    mascots.forEach(m => {
+        if(m) {
+            m.addEventListener('click', () => {
+                m.classList.add('animate-bounce-tilt');
+                setTimeout(() => m.classList.remove('animate-bounce-tilt'), 600);
+            });
+        }
+    });
+
+    // Simple micro-interaction for the input field focus
+    if (amountInput) {
+        amountInput.addEventListener('focus', () => {
+            amountInput.parentElement.classList.add('scale-[1.02]');
+        });
+        amountInput.addEventListener('blur', () => {
+            amountInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    }
+
+    // Particle effect logic for celebratory Ling Ling interaction
+    document.querySelector('#mascot-card')?.addEventListener('click', function(e) {
+        const btn = e.currentTarget;
+        for(let i=0; i<8; i++) {
+            const petal = document.createElement('span');
+            petal.className = 'material-symbols-outlined absolute pointer-events-none text-accent-coral opacity-0';
+            petal.innerText = 'spa';
+            petal.style.fontSize = Math.random() * 20 + 10 + 'px';
+            petal.style.left = e.offsetX + 'px';
+            petal.style.top = e.offsetY + 'px';
+            btn.appendChild(petal);
+
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.random() * 100 + 50;
+            const tx = Math.cos(angle) * dist;
+            const ty = Math.sin(angle) * dist;
+
+            petal.animate([
+                { transform: 'translate(0,0) scale(0) rotate(0deg)', opacity: 1 },
+                { transform: `translate(${tx}px, ${ty}px) scale(1) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'cubic-bezier(0.1, 0.9, 0.2, 1)'
+            }).onfinish = () => petal.remove();
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,170 @@
+/* ===== 灵记 - 统计页样式 ===== */
+
+.stats-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 页面标题 */
+.stats-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.stats-header-title {
+  font-size: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary-400);
+  font-family: var(--font-heading);
+}
+
+.stats-header-desc {
+  font-size: 14px;
+  color: var(--color-neutral-700);
+}
+
+/* 时间切换 */
+.stats-time-toggle {
+  display: flex;
+  padding: 2px;
+  background: var(--color-primary-100);
+  border-radius: var(--radius-2xl);
+  width: fit-content;
+  margin-bottom: 4px;
+}
+
+.stats-time-btn {
+  padding: 8px 20px;
+  border-radius: var(--radius-2xl);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-neutral-700);
+  transition: all 0.3s;
+}
+
+.stats-time-btn--active {
+  background: var(--color-primary-400);
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 133, 162, 0.3);
+}
+
+/* 汇总卡片 */
+.stats-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stats-summary-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.stats-summary-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.stats-summary-icon--income {
+  background: rgba(168, 216, 202, 0.2);
+  color: var(--color-accent-mint);
+}
+
+.stats-summary-icon--expense {
+  background: rgba(255, 123, 137, 0.15);
+  color: var(--color-accent-coral);
+}
+
+.stats-summary-info { display: flex; flex-direction: column; gap: 2px; }
+.stats-summary-label { font-size: 11px; color: var(--color-neutral-400); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }
+.stats-summary-value { font-size: 20px; font-weight: 700; color: var(--color-neutral-900); font-family: var(--font-heading); font-variant-numeric: tabular-nums; }
+
+/* 灵灵消息卡片 */
+.stats-mascot-card {
+  grid-column: 1 / -1;
+  background: var(--color-primary-50);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-float);
+  border: 1px solid rgba(255, 133, 162, 0.1);
+}
+
+.stats-mascot-img {
+  font-size: 40px;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.stats-mascot-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stats-mascot-title { font-size: 15px; font-weight: 600; color: var(--color-primary-400); }
+.stats-mascot-desc { font-size: 13px; color: var(--color-neutral-700); }
+
+/* 图表容器 */
+.stats-chart-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .stats-chart-section {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.stats-chart-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.stats-chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats-chart-title::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: var(--color-primary-400);
+  border-radius: 2px;
+}
+
+.stats-chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+.stats-chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

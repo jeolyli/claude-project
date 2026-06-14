@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF85A2">
+  <title>灵记 - 我的</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 顶部导航 -->
+    <header class="app-header">
+      <div class="header-left">
+        <span class="header-mascot">🐰</span>
+        <h1 class="header-title">我的</h1>
+      </div>
+      <div class="header-right" id="headerRight"></div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content profile-page">
+      <!-- 用户卡片 -->
+      <div class="profile-card">
+        <div class="profile-avatar" id="profileAvatar" title="点击上传头像">
+          <span id="profileAvatarEmoji">🐰</span>
+          <img id="profileAvatarImg" src="" alt="头像" style="display:none;">
+          <div class="profile-avatar-overlay">
+            <span class="material-symbols-outlined" style="font-size:20px;">photo_camera</span>
+          </div>
+        </div>
+        <input type="file" id="avatarFileInput" accept="image/*" style="display:none;">
+        <h2 class="profile-username" id="profileUsername">用户</h2>
+        <p class="profile-bio">每一天都值得记录 ✨</p>
+      </div>
+
+      <!-- 功能列表 -->
+      <div class="profile-menu">
+        <a href="budget.html" class="profile-menu-item" style="text-decoration:none;">
+          <div class="profile-menu-left">
+            <span class="material-symbols-outlined profile-menu-icon">settings</span>
+            <span>预算设置</span>
+          </div>
+          <span class="material-symbols-outlined profile-menu-arrow">chevron_right</span>
+        </a>
+
+        <a href="categories.html" class="profile-menu-item" style="text-decoration:none;">
+          <div class="profile-menu-left">
+            <span class="material-symbols-outlined profile-menu-icon">category</span>
+            <span>分类管理</span>
+          </div>
+          <span class="material-symbols-outlined profile-menu-arrow">chevron_right</span>
+        </a>
+
+        <a href="data.html" class="profile-menu-item" style="text-decoration:none;">
+          <div class="profile-menu-left">
+            <span class="material-symbols-outlined profile-menu-icon">cloud_upload</span>
+            <span>数据管理</span>
+          </div>
+          <span class="material-symbols-outlined profile-menu-arrow">chevron_right</span>
+        </a>
+
+        <a href="privacy.html" class="profile-menu-item" style="text-decoration:none;">
+          <div class="profile-menu-left">
+            <span class="material-symbols-outlined profile-menu-icon">shield</span>
+            <span>隐私设置</span>
+          </div>
+          <span class="material-symbols-outlined profile-menu-arrow">chevron_right</span>
+        </a>
+      </div>
+
+      <!-- 账号操作 -->
+      <div class="profile-actions">
+        <button class="profile-action-btn profile-action--switch" id="switchAccountBtn">
+          <span class="material-symbols-outlined" style="font-size:18px;">swap_horiz</span>
+          切换账号
+        </button>
+
+        <button class="profile-action-btn profile-action--logout" id="logoutBtn">
+          <span class="material-symbols-outlined" style="font-size:18px;">logout</span>
+          退出登录
+        </button>
+      </div>
+
+      <div class="bottom-spacer"></div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="tab-bar" id="tabBar"></nav>
+  </div>
+
+  <!-- 退出登录确认弹窗 -->
+  <div class="modal-overlay" id="logoutModal" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-icon">🐰</div>
+      <h3 class="modal-title">确定要退出吗？</h3>
+      <p class="modal-desc">退出后需要重新登录才能查看账单数据</p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn--cancel" id="cancelLogout">取消</button>
+        <button class="modal-btn modal-btn--confirm" id="confirmLogout">确定退出</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../js/profile.js"></script>
+  <script type="module">
+    import { getSession } from '../js/storage.js';
+    const session = getSession();
+    if (session) {
+      document.getElementById('headerUsername').textContent = session.username;
+    }
+  </script>
+</body>
+</html>

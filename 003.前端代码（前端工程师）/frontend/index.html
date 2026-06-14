@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF85A2">
+  <meta name="description" content="灵记 - 粉嫩可爱的个人财务管理工具">
+  <title>灵记 - 个人记账助手</title>
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    .entry-page {
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #FFEEF2 0%, #FFF5F7 50%, white 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'PingFang SC', 'Noto Sans SC', sans-serif;
+    }
+    .entry-mascot { font-size: 64px; animation: heartbeat 2s ease-in-out infinite; }
+    .entry-title { font-size: 28px; font-weight: 700; color: #FF85A2; font-family: 'Plus Jakarta Sans', 'PingFang SC', sans-serif; }
+    .loading-dots { display: flex; gap: 8px; margin-top: 8px; }
+    .loading-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFB3C6; animation: bounce-dot 0.8s ease-in-out infinite; }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <div class="entry-page">
+    <span class="entry-mascot animate-heartbeat">🐰</span>
+    <h1 class="entry-title">灵记</h1>
+    <div class="loading-dots">
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+    </div>
+  </div>
+
+  <script>
+    // 检查登录状态并跳转
+    (function() {
+      const SESSION_KEY = 'lingji_current_user';
+      try {
+        const raw = localStorage.getItem(SESSION_KEY);
+        if (raw) {
+          const session = JSON.parse(raw);
+          const expiresAt = new Date(session.expires_at).getTime();
+          if (Date.now() < expiresAt) {
+            // 有效登录 → 跳转首页
+            window.location.replace('pages/home.html');
+            return;
+          }
+        }
+      } catch (e) {
+        // 解析失败，忽略
+      }
+      // 未登录 → 跳转登录页
+      window.location.replace('pages/login.html');
+    })();
+  </script>
+</body>
+</html>

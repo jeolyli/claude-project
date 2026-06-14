@@ -1,0 +1,194 @@
+/* ===== 灵记 - 预算设置页样式 ===== */
+
+.budget-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 提示文字 */
+.budget-hint {
+  font-size: 13px;
+  color: var(--color-neutral-400);
+  padding: 0 4px;
+  line-height: 1.5;
+}
+
+/* 总预算卡片 */
+.budget-total-card {
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-300));
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  color: white;
+  text-align: center;
+  box-shadow: var(--shadow-float);
+}
+
+.budget-total-label {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.budget-total-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.budget-total-currency {
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.budget-total-input {
+  width: 160px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  outline: none;
+  font-family: var(--font-heading);
+}
+
+.budget-total-input:focus {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.budget-total-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.budget-total-hint {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* 分类预算列表 */
+.budget-cat-section {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.budget-cat-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.budget-cat-desc {
+  font-size: 12px;
+  color: var(--color-neutral-400);
+  margin-bottom: 14px;
+}
+
+.budget-cat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.budget-cat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #FFF0F3;
+}
+
+.budget-cat-item:last-child {
+  border-bottom: none;
+}
+
+.budget-cat-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.budget-cat-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-neutral-900);
+}
+
+.budget-cat-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--color-primary-50);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  border: 1.5px solid var(--color-neutral-200);
+  transition: border-color 0.2s;
+}
+
+.budget-cat-input-wrapper:focus-within {
+  border-color: var(--color-primary-400);
+}
+
+.budget-cat-currency {
+  font-size: 13px;
+  color: var(--color-primary-400);
+  font-weight: 600;
+}
+
+.budget-cat-input {
+  width: 70px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  outline: none;
+  text-align: right;
+  font-family: var(--font-heading);
+}
+
+.budget-cat-input::placeholder {
+  color: var(--color-neutral-400);
+}
+
+/* 保存按钮 */
+.budget-save-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-2xl);
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-300));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 133, 162, 0.25);
+}
+
+.budget-save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 133, 162, 0.35);
+}
+
+.budget-save-btn:active {
+  transform: scale(0.97);
+}

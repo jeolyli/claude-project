@@ -1,0 +1,489 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head></head><body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden">```html
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>LingJi - 历史账单记录</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#eed3dc",
+                        "surface-container-low": "#fff0f4",
+                        "secondary-fixed-dim": "#fdb2c5",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#7a4151",
+                        "surface-container-high": "#fde1ea",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "accent-lavender": "#C5A3D9",
+                        "surface-pink": "#FBF5F7",
+                        "on-tertiary-fixed-variant": "#713623",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#ffecf1",
+                        "error": "#ba1a1a",
+                        "on-background": "#26171e",
+                        "surface-container-highest": "#f7dbe5",
+                        "on-primary": "#ffffff",
+                        "chart-transport": "#9EB7D4",
+                        "background": "#fff8f8",
+                        "secondary": "#884c5d",
+                        "surface-tint": "#a03a57",
+                        "accent-mint": "#A8D8CA",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#672f1c",
+                        "on-secondary-fixed-variant": "#6c3546",
+                        "surface": "#fff8f8",
+                        "surface-bright": "#fff8f8",
+                        "on-surface-variant": "#554245",
+                        "on-surface": "#26171e",
+                        "secondary-fixed": "#ffd9e1",
+                        "inverse-surface": "#3d2c33",
+                        "outline-variant": "#dbc0c4",
+                        "primary-container": "#ff85a2",
+                        "on-primary-container": "#771a38",
+                        "on-primary-fixed-variant": "#812240",
+                        "outline": "#887175",
+                        "on-tertiary-fixed": "#390c01",
+                        "inverse-primary": "#ffb1c1",
+                        "secondary-container": "#fdb2c5",
+                        "on-secondary-fixed": "#370a1b",
+                        "accent-coral": "#FF7B89",
+                        "tertiary": "#8d4d38",
+                        "surface-variant": "#f7dbe5",
+                        "chart-housing": "#F0D5BE",
+                        "chart-education": "#F9E4B7",
+                        "primary": "#a03a57",
+                        "tertiary-container": "#e7977e",
+                        "on-primary-fixed": "#3f0017",
+                        "bg-soft": "#FFEEF2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "title-sm": ["Plus Jakarta Sans"],
+                        "label-numeric": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-numeric": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff8f8; }
+        ::-webkit-scrollbar-thumb { background: #fdb2c5; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff85a2; }
+        .kawaii-shadow { box-shadow: 0 4px 16px rgba(255,133,162,0.15); }
+        .pink-glow:focus { outline: none; border-color: #ff85a2; box-shadow: 0 0 0 4px rgba(255,133,162,0.1); }
+        .filter-btn-active { background-color: #a03a57 !important; color: #ffffff !important; box-shadow: 0 4px 16px rgba(255,133,162,0.15); }
+    </style>
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col p-md z-40 bg-surface-pink dark:bg-inverse-surface w-64 rounded-r-xl shadow-[0_4px_16px_rgba(255,133,162,0.15)] hidden md:flex"><div class="flex flex-col items-center mb-xl"><div class="relative mb-sm"><img alt="Ling Ling Mascot" class="w-20 h-20 rounded-full ling-ling-glow border-4 border-white" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4"><div class="absolute -bottom-1 -right-1 bg-accent-mint w-6 h-6 rounded-full border-2 border-white flex items-center justify-center"><span class="material-symbols-outlined text-[12px] text-white" style="font-variation-settings: 'FILL' 1;">favorite</span></div></div><h1 class="text-headline-lg font-headline-lg text-primary">灵记</h1><p class="text-body-sm text-on-surface-variant font-medium">Happy Tracking!</p></div><nav class="flex flex-col gap-xs flex-grow"><a class="flex items-center gap-sm text-on-surface-variant hover:bg-surface-container-high rounded-full px-md py-sm transition-all hover:bg-primary/10 duration-200" href="#"><span class="material-symbols-outlined">home</span><span class="text-label-caps font-label-caps uppercase tracking-wider">主面板</span></a><a class="flex items-center gap-sm bg-primary-container text-on-primary-container rounded-full px-md py-sm shadow-sm transition-all scale-95 duration-200" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span><span class="text-label-caps font-label-caps uppercase tracking-wider">账单</span></a><a class="flex items-center gap-sm text-on-surface-variant hover:bg-surface-container-high rounded-full px-md py-sm transition-all hover:bg-primary/10 duration-200" href="#"><span class="material-symbols-outlined">leaderboard</span><span class="text-label-caps font-label-caps uppercase tracking-wider">统计</span></a><a class="flex items-center gap-sm text-on-surface-variant hover:bg-surface-container-high rounded-full px-md py-sm transition-all hover:bg-primary/10 duration-200" href="#"><span class="material-symbols-outlined">settings</span><span class="text-label-caps font-label-caps uppercase tracking-wider">设置</span></a></nav><div class="mt-auto flex flex-col gap-xs mb-md"><a class="flex items-center gap-sm text-on-surface-variant hover:text-primary px-md py-xs transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="text-body-sm">帮助</span></a><a class="flex items-center gap-sm text-on-surface-variant hover:text-error px-md py-xs transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="text-body-sm">退出登录</span></a></div></aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 left-72 right-0 z-30 bg-surface dark:bg-surface-dim shadow-[0_2px_8px_rgba(255,133,162,0.10)]">
+<div class="flex justify-between items-center w-full px-container-margin py-base max-w-full">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant opacity-50">search</span>
+<input class="w-full bg-surface-variant border-none rounded-full py-sm pl-xl pr-md text-body-sm pink-glow" placeholder="搜索账单..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-lg ml-md">
+<button class="text-primary hover:bg-surface-pink p-sm rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="relative">
+<button class="text-primary hover:bg-surface-pink p-sm rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<span class="absolute top-2 right-2 w-2 h-2 bg-accent-coral rounded-full"></span>
+</div>
+<div class="flex items-center gap-sm border-l border-outline-variant pl-lg ml-sm">
+<div class="text-right hidden sm:block">
+<p class="text-label-caps font-label-caps text-primary">LING LING</p>
+<p class="text-body-sm text-on-surface-variant text-[11px]">专业版会员</p>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5 object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pl-72 min-h-screen">
+<div class="p-container-margin max-w-6xl mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-primary mb-xs">历史账单</h2>
+<p class="text-body-md text-on-surface-variant">回顾您的每一笔支出与收入，积少成多。</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-full text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-body-sm">2023年9月</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 bg-surface-container border border-outline-variant rounded-full text-on-secondary-container hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-sm mb-xl" id="filter-container">
+<button class="filter-btn filter-btn-active px-lg py-sm bg-surface-pink border border-outline-variant text-on-surface-variant rounded-full text-body-sm font-semibold transition-all active:scale-95 duration-200" id="filter-all">
+                    全部
+                </button>
+<button class="filter-btn px-lg py-sm bg-surface-pink border border-outline-variant text-on-surface-variant rounded-full text-body-sm transition-all active:scale-95 duration-200 hover:border-accent-coral" id="filter-expense">
+                    支出
+                </button>
+<button class="filter-btn px-lg py-sm bg-surface-pink border border-outline-variant text-on-surface-variant rounded-full text-body-sm transition-all active:scale-95 duration-200 hover:border-accent-mint" id="filter-income">
+                    收入
+                </button>
+<div class="h-8 w-[1px] bg-outline-variant mx-xs"></div>
+<div class="relative group/popover">
+    <button class="px-lg py-sm bg-surface-pink border border-outline-variant text-on-surface-variant rounded-full text-body-sm hover:bg-white flex items-center gap-xs hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 duration-200" onclick="this.nextElementSibling.classList.toggle('hidden'); this.nextElementSibling.classList.toggle('flex')">
+        分类 <span class="material-symbols-outlined text-[18px]">expand_more</span>
+    </button>
+    <div class="hidden absolute top-full left-0 mt-2 w-48 bg-white rounded-2xl shadow-[0_4px_16px_rgba(255,133,162,0.15)] border border-outline-variant z-50 flex-col overflow-hidden transition-all">
+        <button class="flex items-center gap-sm px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm transition-colors" onclick="this.parentElement.classList.add('hidden')"><span class="">🍽️</span> 餐饮</button>
+        <button class="flex items-center gap-sm px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm transition-colors" onclick="this.parentElement.classList.add('hidden')"><span class="">🚌</span> 交通</button>
+        <button class="flex items-center gap-sm px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm transition-colors" onclick="this.parentElement.classList.add('hidden')"><span class="">🛒</span> 购物</button>
+        <button class="flex items-center gap-sm px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm transition-colors" onclick="this.parentElement.classList.add('hidden')"><span class="">🏠</span> 居住</button>
+        <button class="flex items-center gap-sm px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm transition-colors" onclick="this.parentElement.classList.add('hidden')"><span class="">🎮</span> 娱乐</button>
+    </div>
+</div>
+<div class="relative group/popover">
+    <button class="px-lg py-sm bg-surface-pink border border-outline-variant text-on-surface-variant rounded-full text-body-sm hover:bg-white flex items-center gap-xs hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 duration-200" onclick="this.nextElementSibling.classList.toggle('hidden'); this.nextElementSibling.classList.toggle('flex')">
+        时间范围 <span class="material-symbols-outlined text-[18px]">expand_more</span>
+    </button>
+    <div class="hidden absolute top-full left-0 mt-2 w-40 bg-white rounded-2xl shadow-[0_4px_16px_rgba(255,133,162,0.15)] border border-outline-variant z-50 flex-col overflow-hidden transition-all">
+        <button class="px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm text-left transition-colors" onclick="this.parentElement.classList.add('hidden')">本周</button>
+        <button class="px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm text-left transition-colors" onclick="this.parentElement.classList.add('hidden')">本月</button>
+        <button class="px-md py-sm hover:bg-surface-pink text-on-surface-variant text-body-sm text-left transition-colors" onclick="this.parentElement.classList.add('hidden')">近三月</button>
+        <div class="h-[1px] bg-outline-variant mx-md my-1"></div>
+        <button class="px-md py-sm hover:bg-surface-pink text-primary font-medium text-body-sm text-left transition-colors" onclick="this.parentElement.classList.add('hidden')">自定义</button>
+    </div>
+</div>
+</div>
+<!-- Transactions List -->
+<div class="space-y-xl pb-xl" id="transactions-list">
+<!-- Group: 2023年9月 -->
+<section class="month-group">
+<div class="flex items-center justify-between mb-md sticky top-20 bg-background/80 backdrop-blur-md py-base z-10">
+<h3 class="text-title-sm font-headline-md text-on-surface flex items-center gap-sm">
+<span class="w-2 h-6 bg-primary-container rounded-full"></span>
+                            2023年9月
+                        </h3>
+<div class="flex gap-lg text-body-sm">
+<div class="flex flex-col items-end">
+<span class="text-on-surface-variant opacity-60">总支出</span>
+<span class="text-accent-coral font-bold font-label-numeric">-¥4,280.00</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-on-surface-variant opacity-60">总收入</span>
+<span class="text-accent-mint font-bold font-label-numeric">+¥12,000.00</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<!-- Item 1 -->
+<div class="transaction-item expense-item group flex items-center bg-surface-pink p-md rounded-2xl kawaii-shadow border border-transparent hover:border-primary-container transition-all cursor-pointer" data-type="expense">
+<div class="w-12 h-12 rounded-2xl bg-[#FFE4E8] flex items-center justify-center text-accent-coral shrink-0 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px] filled-icon">restaurant</span>
+</div>
+<div class="ml-md flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-sm text-on-surface">餐饮美食</h4>
+<p class="text-body-sm text-on-surface-variant">09月25日 12:30 · 幸福西饼下午茶</p>
+</div>
+<div class="text-right">
+<p class="text-title-sm font-label-numeric text-accent-coral">-¥158.00</p>
+<span class="text-xs px-sm py-[2px] bg-white rounded-full text-on-surface-variant border border-outline-variant">储蓄卡</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="transaction-item income-item group flex items-center bg-surface-pink p-md rounded-2xl kawaii-shadow border border-transparent hover:border-primary-container transition-all cursor-pointer" data-type="income">
+<div class="w-12 h-12 rounded-2xl bg-[#E0F2F1] flex items-center justify-center text-accent-mint shrink-0 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px] filled-icon">payments</span>
+</div>
+<div class="ml-md flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-sm text-on-surface">工资收入</h4>
+<p class="text-body-sm text-on-surface-variant">09月10日 09:00 · 9月份基本工资</p>
+</div>
+<div class="text-right">
+<p class="text-title-sm font-label-numeric text-accent-mint">+¥12,000.00</p>
+<span class="text-xs px-sm py-[2px] bg-white rounded-full text-on-surface-variant border border-outline-variant">招商银行</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="transaction-item expense-item group flex items-center bg-surface-pink p-md rounded-2xl kawaii-shadow border border-transparent hover:border-primary-container transition-all cursor-pointer" data-type="expense">
+<div class="w-12 h-12 rounded-2xl bg-[#E8E0FF] flex items-center justify-center text-accent-lavender shrink-0 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px] filled-icon">shopping_bag</span>
+</div>
+<div class="ml-md flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-sm text-on-surface">购物消费</h4>
+<p class="text-body-sm text-on-surface-variant">09月05日 20:15 · 换季护肤品套装</p>
+</div>
+<div class="text-right">
+<p class="text-title-sm font-label-numeric text-accent-coral">-¥899.00</p>
+<span class="text-xs px-sm py-[2px] bg-white rounded-full text-on-surface-variant border border-outline-variant">支付宝</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Group: 2023年8月 -->
+<section class="month-group">
+<div class="flex items-center justify-between mb-md sticky top-20 bg-background/80 backdrop-blur-md py-base z-10">
+<h3 class="text-title-sm font-headline-md text-on-surface flex items-center gap-sm">
+<span class="w-2 h-6 bg-secondary-container rounded-full"></span>
+                            2023年8月
+                        </h3>
+<div class="flex gap-lg text-body-sm">
+<div class="flex flex-col items-end">
+<span class="text-on-surface-variant opacity-60">总支出</span>
+<span class="text-accent-coral font-bold font-label-numeric">-¥5,820.50</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-on-surface-variant opacity-60">总收入</span>
+<span class="text-accent-mint font-bold font-label-numeric">+¥12,300.00</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<!-- Item 1 -->
+<div class="transaction-item expense-item group flex items-center bg-surface-pink p-md rounded-2xl kawaii-shadow border border-transparent hover:border-primary-container transition-all cursor-pointer" data-type="expense">
+<div class="w-12 h-12 rounded-2xl bg-[#FFF3E0] flex items-center justify-center text-chart-housing shrink-0 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px] filled-icon">home</span>
+</div>
+<div class="ml-md flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-sm text-on-surface">住房房租</h4>
+<p class="text-body-sm text-on-surface-variant">08月20日 10:00 · 8月份房租交纳</p>
+</div>
+<div class="text-right">
+<p class="text-title-sm font-label-numeric text-accent-coral">-¥3,500.00</p>
+<span class="text-xs px-sm py-[2px] bg-white rounded-full text-on-surface-variant border border-outline-variant">银行账单</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="transaction-item expense-item group flex items-center bg-surface-pink p-md rounded-2xl kawaii-shadow border border-transparent hover:border-primary-container transition-all cursor-pointer" data-type="expense">
+<div class="w-12 h-12 rounded-2xl bg-[#E3F2FD] flex items-center justify-center text-chart-transport shrink-0 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px] filled-icon">directions_car</span>
+</div>
+<div class="ml-md flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-sm text-on-surface">交通出行</h4>
+<p class="text-body-sm text-on-surface-variant">08月18日 18:45 · 滴滴打车（公司返程）</p>
+</div>
+<div class="text-right">
+<p class="text-title-sm font-label-numeric text-accent-coral">-¥45.20</p>
+<span class="text-xs px-sm py-[2px] bg-white rounded-full text-on-surface-variant border border-outline-variant">微信支付</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Load More / Footer -->
+<div class="pt-xl text-center" id="load-more-container">
+<button class="px-xl py-md bg-white border-2 border-primary-container text-primary rounded-3xl font-bold hover:bg-primary-container hover:text-on-primary transition-all active:scale-95 group hover:scale-105 duration-300">
+                        加载更多历史账单
+                        <span class="material-symbols-outlined ml-xs group-hover:translate-y-1 transition-transform">keyboard_double_arrow_down</span>
+</button>
+<p class="mt-md text-body-sm text-on-surface-variant opacity-60">已经显示近 3 个月的账单记录</p>
+</div>
+</div>
+<!-- Empty State Illustration -->
+<div class="hidden flex-col items-center justify-center py-24 text-center" id="empty-state">
+<img alt="Empty search results" class="w-48 h-48 mb-lg opacity-40" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+<h3 class="text-headline-md text-primary mb-xs">哎呀，没有找到账单</h3>
+<p class="text-body-md text-on-surface-variant mb-xl">尝试更换搜索词或者筛选条件吧~</p>
+<button class="px-lg py-sm bg-primary-container text-on-primary-container rounded-full transition-all active:scale-95" id="reset-filters">重置筛选</button>
+</div>
+</div>
+<!-- Decorative Floating Ling Ling -->
+<div class="fixed bottom-lg right-lg z-20 group">
+<div class="relative">
+<div class="absolute -top-12 -left-12 bg-white px-md py-xs rounded-full shadow-md text-xs text-primary font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                    需要帮助吗？
+                </div>
+<div class="w-16 h-16 bg-white rounded-full kawaii-shadow p-1 border-2 border-primary-container cursor-pointer hover:rotate-12 transition-transform">
+<img alt="Support" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLuqOcdioJC_2-DgB-jw042fS--ONvO1RKMmwI7bQJ2BEzomC_Y6auoKRpd_Km7Si2mw5cKUhYGiScnVozBht_OZkfored_VHX0r_k9D_Md_NDTR3CjWyfH4iCpXTdA0IgrrJK4DvlowYeJou3zr_R_Tj4ys4Pqwg7iXaacIhqbqtO_j_SBUBOJMuqQ0NdFNHzM4kloYvHJTyyHa4qRXH-62uYm0MYTjbYuAoMgdu5td7SmvfCZzeW1X4A4">
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.cursor-pointer').forEach(item => {
+            item.addEventListener('mousedown', () => {
+                item.classList.add('scale-[0.98]');
+            });
+            item.addEventListener('mouseup', () => {
+                item.classList.remove('scale-[0.98]');
+            });
+        });
+
+        // Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const transactionsList = document.getElementById('transactions-list');
+        const transactionItems = document.querySelectorAll('.transaction-item');
+        const monthGroups = document.querySelectorAll('.month-group');
+        const emptyState = document.getElementById('empty-state');
+        const loadMoreContainer = document.getElementById('load-more-container');
+
+        const applyFilter = (filterType) => {
+            // Update UI state of buttons
+            filterBtns.forEach(btn => btn.classList.remove('filter-btn-active'));
+            document.getElementById(`filter-${filterType}`).classList.add('filter-btn-active');
+
+            let visibleCount = 0;
+
+            transactionItems.forEach(item => {
+                const itemType = item.getAttribute('data-type');
+                if (filterType === 'all' || itemType === filterType) {
+                    item.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Handle empty sections (month headers)
+            monthGroups.forEach(group => {
+                const visibleInGroup = Array.from(group.querySelectorAll('.transaction-item')).filter(i => i.style.display !== 'none').length;
+                group.style.display = visibleInGroup > 0 ? 'block' : 'none';
+            });
+
+            // Handle empty state
+            if (visibleCount === 0) {
+                transactionsList.classList.add('hidden');
+                loadMoreContainer.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+            } else {
+                transactionsList.classList.remove('hidden');
+                loadMoreContainer.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                emptyState.classList.remove('flex');
+            }
+        };
+
+        document.getElementById('filter-all').addEventListener('click', () => applyFilter('all'));
+        document.getElementById('filter-expense').addEventListener('click', () => applyFilter('expense'));
+        document.getElementById('filter-income').addEventListener('click', () => applyFilter('income'));
+        document.getElementById('reset-filters').addEventListener('click', () => applyFilter('all'));
+
+        // Search simulation
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query === 'empty') {
+                transactionsList.classList.add('hidden');
+                loadMoreContainer.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+            } else if (query === '') {
+                // If search is cleared, respect current filter
+                const activeFilter = document.querySelector('.filter-btn-active').id.replace('filter-', '');
+                applyFilter(activeFilter);
+            } else {
+                // Basic keyword search logic
+                let searchMatches = 0;
+                transactionItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = 'flex';
+                        searchMatches++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                monthGroups.forEach(group => {
+                    const visibleInGroup = Array.from(group.querySelectorAll('.transaction-item')).filter(i => i.style.display !== 'none').length;
+                    group.style.display = visibleInGroup > 0 ? 'block' : 'none';
+                });
+
+                if (searchMatches === 0) {
+                    transactionsList.classList.add('hidden');
+                    loadMoreContainer.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                    emptyState.classList.add('flex');
+                } else {
+                    transactionsList.classList.remove('hidden');
+                    loadMoreContainer.classList.remove('hidden');
+                    emptyState.classList.add('hidden');
+                    emptyState.classList.remove('flex');
+                }
+            }
+        });
+    </script>
+```
+
+<script>
+    window.addEventListener('click', function(e) {
+        document.querySelectorAll('.group\\/popover').forEach(container => {
+            if (!container.contains(e.target)) {
+                const popover = container.querySelector('div[class*="absolute"]');
+                if (popover) {
+                    popover.classList.add('hidden');
+                    popover.classList.remove('flex');
+                }
+            }
+        });
+    });
+</script></body></html>

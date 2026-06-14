@@ -1,0 +1,148 @@
+/* ===== 灵记 - 隐私设置页样式 ===== */
+
+.privacy-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.privacy-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.privacy-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.privacy-card-desc {
+  font-size: 13px;
+  color: var(--color-neutral-400);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.privacy-field {
+  margin-bottom: 14px;
+}
+
+.privacy-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-neutral-700);
+  margin-bottom: 6px;
+  padding-left: 2px;
+}
+
+.privacy-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-neutral-200);
+  background: var(--color-primary-50);
+  font-size: 15px;
+  color: var(--color-neutral-900);
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.privacy-input:focus {
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.1);
+}
+
+.privacy-input::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.privacy-input-wrap {
+  position: relative;
+}
+
+.privacy-input-wrap .password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-neutral-400);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.privacy-error {
+  color: var(--color-accent-coral);
+  font-size: 12px;
+  margin-top: 6px;
+  padding-left: 2px;
+}
+
+.privacy-success {
+  color: var(--color-accent-mint);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px;
+  background: rgba(168, 216, 202, 0.15);
+  border-radius: var(--radius-md);
+}
+
+.privacy-save-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-2xl);
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-300));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 133, 162, 0.25);
+  margin-top: 6px;
+}
+
+.privacy-save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 133, 162, 0.35);
+}
+
+.privacy-save-btn:disabled {
+  background: var(--color-neutral-200);
+  color: var(--color-neutral-400);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.privacy-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  background: var(--color-primary-50);
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  color: var(--color-neutral-700);
+  line-height: 1.5;
+}
+
+.privacy-info-icon {
+  color: var(--color-primary-400);
+  flex-shrink: 0;
+  margin-top: 1px;
+}

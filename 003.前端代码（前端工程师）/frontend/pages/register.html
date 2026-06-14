@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF85A2">
+  <title>灵记 - 注册</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-page">
+    <!-- 背景装饰 -->
+    <div class="auth-decoration" style="font-size: 36px;">🌸</div>
+    <div class="auth-decoration" style="font-size: 28px;">💕</div>
+    <div class="auth-decoration" style="font-size: 24px;">✨</div>
+
+    <!-- 主卡片 -->
+    <div class="auth-card">
+      <div class="auth-mascot animate-heartbeat">🐰</div>
+      <h1 class="auth-title">灵记</h1>
+      <p class="auth-subtitle">创建账号，开启记账之旅 ✨</p>
+
+      <!-- 错误提示 -->
+      <p class="auth-error" id="authError"></p>
+
+      <!-- 注册表单 -->
+      <form class="auth-form" id="registerForm">
+        <div class="auth-field">
+          <input type="text" class="auth-input" id="regUser" placeholder="用户名（2-20个字符）" maxlength="20" autocomplete="username" autofocus>
+        </div>
+        <div class="auth-field">
+          <input type="password" class="auth-input" id="regPass" placeholder="密码（6-20个字符，含字母和数字）" maxlength="20" autocomplete="new-password">
+          <button type="button" class="password-toggle" id="togglePassBtn">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
+        <div class="auth-field">
+          <input type="password" class="auth-input" id="regConfirmPass" placeholder="确认密码" maxlength="20" autocomplete="new-password">
+          <button type="button" class="password-toggle" id="toggleConfirmBtn">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
+        <button type="submit" class="auth-submit" id="registerSubmit">注册</button>
+      </form>
+
+      <!-- 底部链接 -->
+      <p class="auth-switch">
+        已有账号？
+        <a href="login.html" class="auth-switch-btn">去登录</a>
+      </p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { hashPassword, generateSalt } from '../js/crypto.js';
+    import {
+      findUserByUsername,
+      saveUser,
+      saveSession,
+      isSessionValid,
+      generateUserId,
+      PRESET_CATEGORIES,
+      saveUserData,
+    } from '../js/storage.js';
+
+    // 已登录则跳转首页
+    if (isSessionValid()) {
+      window.location.replace('home.html');
+    }
+
+    // 密码可见切换
+    document.getElementById('togglePassBtn').addEventListener('click', function () {
+      const input = document.getElementById('regPass');
+      const icon = this.querySelector('.material-symbols-outlined');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    });
+
+    document.getElementById('toggleConfirmBtn').addEventListener('click', function () {
+      const input = document.getElementById('regConfirmPass');
+      const icon = this.querySelector('.material-symbols-outlined');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    });
+
+    // 表单提交
+    document.getElementById('registerForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const errorEl = document.getElementById('authError');
+      errorEl.classList.remove('auth-error--visible');
+
+      const username = document.getElementById('regUser').value.trim();
+      const password = document.getElementById('regPass').value;
+      const confirmPass = document.getElementById('regConfirmPass').value;
+
+      // 验证用户名
+      if (!username) {
+        errorEl.textContent = '请输入用户名';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+      if (username.length < 2 || username.length > 20) {
+        errorEl.textContent = '用户名应为2-20个字符';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+      if (/^\d+$/.test(username)) {
+        errorEl.textContent = '用户名不能为纯数字';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+
+      // 检查唯一性
+      if (findUserByUsername(username)) {
+        errorEl.textContent = '用户名已被注册';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+
+      // 验证密码
+      if (!password) {
+        errorEl.textContent = '请输入密码';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+      if (password.length < 6 || password.length > 20) {
+        errorEl.textContent = '密码应为6-20个字符';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+      if (!/[a-zA-Z]/.test(password)) {
+        errorEl.textContent = '密码需包含字母';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+      if (!/\d/.test(password)) {
+        errorEl.textContent = '密码需包含数字';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+
+      // 确认密码
+      if (password !== confirmPass) {
+        errorEl.textContent = '两次密码输入不一致';
+        errorEl.classList.add('auth-error--visible');
+        shake();
+        return;
+      }
+
+      // 创建用户
+      const salt = generateSalt();
+      const password_hash = await hashPassword(password, salt);
+      const now = new Date().toISOString();
+
+      const newUser = {
+        id: generateUserId(),
+        username,
+        password_hash,
+        salt,
+        created_at: now,
+        last_login_at: now,
+        is_active: true,
+      };
+
+      saveUser(newUser);
+
+      // 初始化空数据
+      saveUserData(newUser.id, {
+        transactions: [],
+        categories: [...PRESET_CATEGORIES],
+        budget: { total_budget: 5000, category_budgets: {} },
+        recurringBills: [],
+      });
+
+      // 自动登录
+      saveSession(newUser);
+
+      showToast('🎉 注册成功！欢迎加入灵记～');
+      setTimeout(() => { window.location.href = 'home.html'; }, 800);
+    });
+
+    function shake() {
+      const form = document.getElementById('registerForm');
+      form.classList.add('auth-form--shake');
+      setTimeout(() => form.classList.remove('auth-form--shake'), 300);
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s';
+        setTimeout(() => toast.remove(), 300);
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

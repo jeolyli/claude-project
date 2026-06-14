@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF85A2">
+  <title>灵记 - 首页</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* 交易记录行样式（与 bills 共享） */
+    .transaction-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #FFF0F3;
+    }
+    .transaction-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .transaction-icon {
+      width: 42px; height: 42px; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; background: var(--color-primary-100); flex-shrink: 0;
+    }
+    .transaction-icon[data-category="餐饮"] { background: #FFF0EE; }
+    .transaction-icon[data-category="交通"] { background: #EEF4FA; }
+    .transaction-icon[data-category="购物"] { background: #FFF0F5; }
+    .transaction-icon[data-category="居住"] { background: #FEF6EF; }
+    .transaction-icon[data-category="娱乐"] { background: #F5EFFA; }
+    .transaction-icon[data-category="医疗"] { background: #EEF8F4; }
+    .transaction-icon[data-category="教育"] { background: #FEFAEE; }
+    .transaction-icon[data-category="其他"] { background: #F8F3F5; }
+    .transaction-info { flex: 1; min-width: 0; }
+    .transaction-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px; }
+    .transaction-category { font-size: 14px; font-weight: 500; color: var(--color-neutral-900); }
+    .transaction-amount { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .amount-expense { color: var(--color-neutral-900); }
+    .amount-income { color: #4DB89E; }
+    .transaction-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .transaction-note { font-size: 12px; color: var(--color-neutral-400); }
+    .transaction-date { font-size: 12px; color: var(--color-neutral-400); }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- 顶部导航 -->
+    <header class="app-header">
+      <div class="header-left">
+        <span class="header-mascot">🐰</span>
+        <h1 class="header-title">灵记</h1>
+      </div>
+      <div class="header-right" id="headerRight"></div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <!-- 预算看板 -->
+      <section class="budget-card">
+        <div class="budget-header">
+          <div class="budget-title-row">
+            <span class="material-symbols-outlined" style="font-size:20px;">account_balance_wallet</span>
+            <h2 class="budget-title">本月预算</h2>
+          </div>
+          <span class="budget-status-tag" id="budgetStatus">预算健康，保持节奏</span>
+        </div>
+        <div class="budget-amounts">
+          <div class="budget-item">
+            <span class="budget-label">已支出</span>
+            <span class="budget-value" id="budgetExpense">¥0.00</span>
+          </div>
+          <div class="budget-divider"></div>
+          <div class="budget-item">
+            <span class="budget-label">预算剩余</span>
+            <span class="budget-value" id="budgetRemaining">¥5,000.00</span>
+          </div>
+          <div class="budget-divider"></div>
+          <div class="budget-item">
+            <span class="budget-label">本月收入</span>
+            <span class="budget-value" id="budgetIncome">¥0.00</span>
+          </div>
+        </div>
+        <div class="budget-progress-bar">
+          <div class="budget-progress-fill" id="budgetFill" style="width: 0%; background-color: var(--color-accent-mint);"></div>
+        </div>
+        <div class="budget-progress-labels">
+          <span id="budgetTotal">本月预算 ¥5,000</span>
+          <span>已使用 <span id="budgetPercent">0%</span></span>
+        </div>
+      </section>
+
+      <!-- 快捷记账 -->
+      <section class="record-card" id="recordSection">
+        <h2 class="section-title">
+          <span class="material-symbols-outlined" style="font-size:18px;">edit_note</span>
+          快捷记账
+        </h2>
+
+        <!-- 收支类型切换 -->
+        <div class="type-switch">
+          <button class="type-btn type-btn--active type-btn--expense" data-type="expense">
+            <span class="material-symbols-outlined" style="font-size:16px;">trending_down</span>
+            支出
+          </button>
+          <button class="type-btn" data-type="income">
+            <span class="material-symbols-outlined" style="font-size:16px;">trending_up</span>
+            收入
+          </button>
+        </div>
+
+        <!-- 金额输入 -->
+        <div class="amount-input-wrapper">
+          <span class="currency-symbol">¥</span>
+          <input type="number" class="amount-input" id="recordAmount" placeholder="0.00" inputmode="decimal" step="0.01" min="0.01" max="99999999.99">
+        </div>
+
+        <!-- 分类选择 -->
+        <div class="category-scroll" id="categoryScroll">
+          <!-- 由 JS 动态渲染 -->
+        </div>
+
+        <!-- 备注与保存 -->
+        <div class="record-actions">
+          <input type="text" class="note-input" id="recordNote" placeholder="添加备注（选填）" maxlength="200">
+          <button class="save-btn" id="saveRecordBtn">保存</button>
+        </div>
+      </section>
+
+      <!-- 今日概览 -->
+      <section class="today-card">
+        <div class="today-item">
+          <div class="today-icon today-icon--expense">
+            <span class="material-symbols-outlined" style="font-size:16px;">trending_down</span>
+          </div>
+          <div class="today-info">
+            <span class="today-label">今日支出</span>
+            <span class="today-value" id="todayExpense">¥0.00</span>
+          </div>
+        </div>
+        <div class="today-item">
+          <div class="today-icon today-icon--income">
+            <span class="material-symbols-outlined" style="font-size:16px;">trending_up</span>
+          </div>
+          <div class="today-info">
+            <span class="today-label">今日收入</span>
+            <span class="today-value" id="todayIncome">¥0.00</span>
+          </div>
+        </div>
+        <div class="today-item">
+          <button class="quick-record-fab" id="recordFab">+</button>
+          <span class="today-label">记一笔</span>
+        </div>
+      </section>
+
+      <!-- 最近记录 -->
+      <section class="recent-section">
+        <div class="recent-header">
+          <h2 class="section-title">
+            <span class="material-symbols-outlined" style="font-size:18px;">receipt</span>
+            最近记录
+          </h2>
+          <a href="bills.html" class="view-all-btn">查看全部 →</a>
+        </div>
+
+        <div id="recentEmpty" class="empty-state" style="padding: 24px 0;">
+          <p class="empty-state-desc" style="margin:0;">还没有记录哦，快来记第一笔吧～</p>
+        </div>
+        <div id="recentList"></div>
+      </section>
+
+      <div class="bottom-spacer"></div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="tab-bar" id="tabBar"></nav>
+  </div>
+
+  <script type="module" src="../js/home.js"></script>
+  <script type="module">
+    import { renderHeaderUser } from '../js/app.js';
+    renderHeaderUser('#headerRight');
+  </script>
+</body>
+</html>

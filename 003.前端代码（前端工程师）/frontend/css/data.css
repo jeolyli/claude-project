@@ -1,0 +1,125 @@
+/* ===== 灵记 - 数据管理页样式 ===== */
+
+.data-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.data-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.data-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.data-card-desc {
+  font-size: 13px;
+  color: var(--color-neutral-400);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.data-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1.5px solid var(--color-neutral-200);
+  background: white;
+  color: var(--color-neutral-700);
+}
+
+.data-btn:hover {
+  background: var(--color-primary-50);
+  border-color: var(--color-primary-300);
+}
+
+.data-btn--primary {
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-300));
+  color: white;
+  border: none;
+  box-shadow: 0 2px 8px rgba(255, 133, 162, 0.25);
+}
+
+.data-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 133, 162, 0.35);
+}
+
+.data-btn--danger {
+  color: var(--color-accent-coral);
+  border-color: var(--color-primary-200);
+}
+
+.data-btn--danger:hover {
+  background: #FFF0F0;
+  border-color: var(--color-accent-coral);
+}
+
+.data-btn--outline {
+  background: var(--color-primary-50);
+  border: 2px dashed var(--color-primary-200);
+  color: var(--color-primary-400);
+}
+
+.data-btn--outline:hover {
+  border-color: var(--color-primary-400);
+  background: var(--color-primary-100);
+}
+
+.data-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.data-stat {
+  flex: 1;
+  background: var(--color-primary-50);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  text-align: center;
+}
+
+.data-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary-400);
+  font-family: var(--font-heading);
+}
+
+.data-stat-label {
+  font-size: 11px;
+  color: var(--color-neutral-400);
+  margin-top: 2px;
+}
+
+/* 确认弹窗 */
+.data-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(61, 44, 51, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2100;
+}
