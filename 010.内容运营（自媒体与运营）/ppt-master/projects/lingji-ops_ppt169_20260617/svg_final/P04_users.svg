@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,45 H62 A2,2 0 0 1 64,47 V79 A2,2 0 0 1 62,81 H62 A2,2 0 0 1 60,79 V47 A2,2 0 0 1 62,45 Z" />
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">谁在用灵记</text>
+  
+  <path fill="#F0F2F7" d="M74,120 H606 A14,14 0 0 1 620,134 V626 A14,14 0 0 1 606,640 H74 A14,14 0 0 1 60,626 V134 A14,14 0 0 1 74,120 Z" />
+  <text x="100" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="24" font-weight="bold" fill="#1565C0">核心用户画像</text>
+  <text x="100" y="210" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">年龄段: 22-35 岁</text>
+  <text x="100" y="245" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">特征: 刚步入职场，有稳定收入</text>
+  <text x="100" y="280" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">痛点: '不知道钱花去哪了'</text>
+  <text x="100" y="315" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">审美: 喜欢治愈可爱风格</text>
+  <text x="100" y="350" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">频率: 每日 1-3 次 + 每月 1 次统计</text>
+  <text x="100" y="410" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#64748B">次要用户</text>
+  <text x="100" y="445" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">对复杂记账APP感到疲惫的大学生</text>
+  <text x="100" y="480" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">想要轻量替代品的职场新人</text>
+  
+  <path fill="#F0F2F7" d="M674,120 H1206 A14,14 0 0 1 1220,134 V626 A14,14 0 0 1 1206,640 H674 A14,14 0 0 1 660,626 V134 A14,14 0 0 1 674,120 Z" />
+  <text x="700" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="24" font-weight="bold" fill="#DC2626">不建议投入精力服务的用户</text>
+  <text x="700" y="220" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">需要企业级财务管理</text>
+  <text x="700" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">需要多币种支持</text>
+  <text x="700" y="300" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">需要投资组合追踪</text>
+  <text x="700" y="340" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">超出轻量级记账工具的定位</text>
+  <path fill="#E2E8F0" d="M701.50,400 H1178.50 A1.50,1.50 0 0 1 1180,401.50 V401.50 A1.50,1.50 0 0 1 1178.50,403 H701.50 A1.50,1.50 0 0 1 700,401.50 V401.50 A1.50,1.50 0 0 1 701.50,400 Z" />
+  <text x="700" y="450" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1E293B">核心洞察</text>
+  <text x="700" y="485" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">年轻人对'消费羞耻'比'财务自由'更有共鸣</text>
+  <text x="700" y="520" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">'搞钱'类硬核工具的排斥感是灵记的机会</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">04</text>
+</svg>

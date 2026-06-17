@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>灵记 · 管理后台</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+<div class="login-page">
+  <div class="login-card">
+    <h1 class="login-logo">🐰 灵记</h1>
+    <p class="login-sub">后台管理系统</p>
+    <div id="loginError" class="login-error" style="display:none"></div>
+    <input id="username" class="login-input" type="text" placeholder="管理员账号" autofocus>
+    <input id="password" class="login-input" type="password" placeholder="密码" onkeydown="if(event.key==='Enter')login()">
+    <button class="login-btn" onclick="login()">登 录</button>
+  </div>
+</div>
+<script>
+const API = 'http://localhost:3002/api/admin';
+
+async function login() {
+  const u = document.getElementById('username').value.trim();
+  const p = document.getElementById('password').value;
+  if (!u || !p) return showError('请输入账号和密码');
+  try {
+    const r = await fetch(API + '/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: u, password: p }) });
+    const d = await r.json();
+    if (!d.success) return showError(d.error);
+    localStorage.setItem('lingji_admin_token', d.token);
+    localStorage.setItem('lingji_admin_user', JSON.stringify(d.user));
+    location.href = 'dashboard.html';
+  } catch { showError('网络错误'); }
+}
+
+function showError(msg) {
+  const el = document.getElementById('loginError');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+</script>
+</body>
+</html>

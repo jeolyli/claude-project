@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="topBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0" />
+      <stop offset="100%" stop-color="#FF85A2" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <rect x="0" y="0" width="1280" height="3" fill="url(#topBar)" />
+  <text x="640" y="85" text-anchor="middle" font-family="Georgia, 'Microsoft YaHei', serif" font-size="40" font-weight="bold" fill="#1E293B">目录</text>
+  <path fill="#FF85A2" fill-opacity="0.6" d="M601.50,100 H678.50 A1.50,1.50 0 0 1 680,101.50 V101.50 A1.50,1.50 0 0 1 678.50,103 H601.50 A1.50,1.50 0 0 1 600,101.50 V101.50 A1.50,1.50 0 0 1 601.50,100 Z" />
+  
+  <text x="100" y="160" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">01</text>
+  <text x="160" y="160" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">项目定位</text>
+  <text x="100" y="210" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">02</text>
+  <text x="160" y="210" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">用户群体定位</text>
+  <text x="100" y="260" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">03</text>
+  <text x="160" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">核心功能</text>
+  <text x="100" y="310" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">04</text>
+  <text x="160" y="310" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">用户维护方案</text>
+  <text x="100" y="360" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">05</text>
+  <text x="160" y="360" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">推广方案</text>
+  <text x="740" y="160" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">06</text>
+  <text x="800" y="160" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">内容运营方案</text>
+  <text x="740" y="210" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">07</text>
+  <text x="800" y="210" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">自媒体运营管理</text>
+  <text x="740" y="260" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">08</text>
+  <text x="800" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">私域运营方案</text>
+  <text x="740" y="310" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">09</text>
+  <text x="800" y="310" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">活动运营建议</text>
+  <text x="740" y="360" font-family="Georgia, 'Microsoft YaHei', serif" font-size="32" font-weight="bold" fill="#1565C0">10</text>
+  <text x="800" y="360" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" fill="#1E293B">风险与应急管理</text>
+  <text x="640" y="660" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">灵记 (LingJi) · 项目运营手册</text>
+</svg>

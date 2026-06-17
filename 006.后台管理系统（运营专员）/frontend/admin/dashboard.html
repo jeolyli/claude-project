@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>运营概览 · 灵记后台</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body class="admin-body">
+<nav class="topnav">
+  <span class="topnav-brand">🐰 灵记 · 运营概览</span>
+  <div class="topnav-links">
+    <a href="dashboard.html" class="active">概览</a>
+    <a href="users.html">用户</a>
+    <a href="transactions.html">交易</a>
+    <a href="budgets.html">预算</a>
+    <a href="#" onclick="logout()">退出</a>
+  </div>
+</nav>
+<div class="main">
+  <div class="cards" id="cards"></div>
+  <div class="charts-row">
+    <div class="chart-box"><canvas id="trendChart"></canvas></div>
+    <div class="chart-box"><canvas id="catChart"></canvas></div>
+  </div>
+  <div class="table-box">
+    <h3>活跃用户 Top 10</h3>
+    <table><thead><tr><th>ID</th><th>用户名</th><th>本月笔数</th><th>本月金额</th></tr></thead><tbody id="topUsers"></tbody></table>
+  </div>
+  <div class="table-box">
+    <h3>最近注册</h3>
+    <table><thead><tr><th>ID</th><th>用户名</th><th>昵称</th><th>注册时间</th></tr></thead><tbody id="recentUsers"></tbody></table>
+  </div>
+</div>
+<script src="js/admin-common.js"></script>
+<script>
+const API = adminAPI;
+checkAuth();
+
+async function load() {
+  const [ov, trends, cats, topU, recent] = await Promise.all([
+    fetchJSON('/dashboard/overview'),
+    fetchJSON('/dashboard/trends'),
+    fetchJSON('/dashboard/top-categories'),
+    fetchJSON('/dashboard/top-users'),
+    fetchJSON('/dashboard/recent-users'),
+  ]);
+
+  const c = ov.data || {};
+  document.getElementById('cards').innerHTML = [
+    { label: '注册用户', val: c.totalUsers, sub: `本月 +${c.newUsersThisMonth}` },
+    { label: '本月交易笔数', val: c.monthTransactions, sub: `累计 ${c.totalTransactions}` },
+    { label: '本月支出', val: '¥' + fmt(c.monthExpense), sub: `累计 ¥${fmt(c.totalExpense)}` },
+    { label: '本月收入', val: '¥' + fmt(c.monthIncome), sub: `活跃用户 ${c.activeUsers}` },
+  ].map(c => `<div class="card"><div class="card-val">${c.val}</div><div class="card-label">${c.label}</div><div class="card-sub">${c.sub}</div></div>`).join('');
+
+  if (trends.data) drawLine(trends.data);
+  if (cats.data) drawBar(cats.data);
+  if (topU.data) document.getElementById('topUsers').innerHTML = topU.data.map(u =>
+    `<tr><td>${u.id}</td><td>${u.username}</td><td>${u.count}</td><td>¥${fmt(u.total)}</td></tr>`
+  ).join('');
+  if (recent.data) document.getElementById('recentUsers').innerHTML = recent.data.map(u =>
+    `<tr><td>${u.id}</td><td>${u.username}</td><td>${u.nickname||'-'}</td><td>${u.created_at?.slice(0,10)}</td></tr>`
+  ).join('');
+}
+
+function drawLine(data) {
+  const ctx = document.getElementById('trendChart');
+  new Chart(ctx, { type: 'line', data: {
+    labels: data.map(d => d.date.slice(5)),
+    datasets: [
+      { label: '支出', data: data.map(d => d.expense), borderColor: '#FF85A2', tension: 0.3, fill: false },
+      { label: '收入', data: data.map(d => d.income), borderColor: '#16A34A', tension: 0.3, fill: false },
+    ]
+  }, options: { responsive: true, plugins: { title: { display: true, text: '近30天交易趋势' } } } });
+}
+
+function drawBar(data) {
+  const ctx = document.getElementById('catChart');
+  new Chart(ctx, { type: 'bar', data: {
+    labels: data.map(d => d.name),
+    datasets: [{ label: '支出金额', data: data.map(d => d.total), backgroundColor: '#FF85A2' }]
+  }, options: { responsive: true, plugins: { title: { display: true, text: '分类消费排行 Top 10' } } } });
+}
+
+function logout() { localStorage.clear(); location.href = 'login.html'; }
+function fmt(v) { const n = parseFloat(v); return isNaN(n) ? '0' : n.toLocaleString(); }
+
+load();
+</script>
+</body>
+</html>

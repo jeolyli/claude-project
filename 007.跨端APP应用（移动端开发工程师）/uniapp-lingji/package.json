@@ -1,0 +1,21 @@
+{
+  "name": "lingji-uniapp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "灵记 (LingJi) — uni-app 跨端应用 · 测试配置",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --config vitest.config.js",
+    "test:watch": "vitest --config vitest.config.js",
+    "test:coverage": "vitest run --config vitest.config.js --coverage"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0",
+    "jsdom": "^26.0.0",
+    "@vitest/coverage-v8": "^3.0.0",
+    "@vitest/ui": "^3.0.0",
+    "@vue/test-utils": "^2.4.0",
+    "pinia": "^2.1.0",
+    "vue": "^3.4.0"
+  }
+}

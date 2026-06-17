@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD"/>
+  <rect x="60" y="45" width="4" height="36" rx="2" fill="#1565C0"/>
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">轻量私域: 三级结构</text>
+  <text x="76" y="100" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">私域的本质不是'微信群'，而是'让用户觉得有地方可以找到你'。</text>
+  <!-- Three tiers -->
+  <rect x="60" y="140" width="370" height="350" rx="12" fill="#1565C0" fill-opacity="0.06"/>
+  <text x="80" y="185" font-family="Georgia, 'Microsoft YaHei', serif" font-size="22" font-weight="bold" fill="#1565C0">Level 1: GitHub Issues</text>
+  <text x="80" y="225" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">最自然的反馈渠道</text>
+  <text x="80" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">用户在Issues里提问→回复→</text>
+  <text x="80" y="285" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">其他用户发现讨论→形成微型社区</text>
+  <text x="80" y="335" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">当前阶段最合适的方案</text>
+  <rect x="455" y="140" width="370" height="350" rx="12" fill="#F0F2F7"/>
+  <text x="475" y="185" font-family="Georgia, 'Microsoft YaHei', serif" font-size="22" font-weight="bold" fill="#1565C0">Level 2: 微信群</text>
+  <text x="475" y="225" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">当GitHub Issues超过50条后考虑</text>
+  <text x="475" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">只建一个群，不做分层</text>
+  <text x="475" y="285" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">群规: '聊记账和消费相关'</text>
+  <text x="475" y="335" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">群主每周主动分享消费复盘</text>
+  <rect x="850" y="140" width="370" height="350" rx="12" fill="#F0F2F7"/>
+  <text x="870" y="185" font-family="Georgia, 'Microsoft YaHei', serif" font-size="22" font-weight="bold" fill="#1565C0">Level 3: 邮件列表</text>
+  <text x="870" y="225" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">用GitHub Releases订阅替代</text>
+  <text x="870" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">用户订阅Release = 加入</text>
+  <text x="870" y="285" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">产品更新通知邮件列表</text>
+  <text x="870" y="335" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">零维护成本</text>
+  <!-- Bottom: NOT doing -->
+  <rect x="60" y="520" width="1160" height="120" rx="12" fill="#F0F2F7"/>
+  <text x="80" y="555" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#DC2626">不做什么</text>
+  <text x="80" y="590" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不做企业微信 — 不需要SCRM。不建付费社群 — 工具本身免费。不做1v1私聊 — 走GitHub Issues。</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">10</text>
+</svg>

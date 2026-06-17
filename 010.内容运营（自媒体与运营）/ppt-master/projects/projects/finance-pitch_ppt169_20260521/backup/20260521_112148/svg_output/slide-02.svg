@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1428"/>
+      <stop offset="100%" stop-color="#1E3A5F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bgGrad)"/>
+
+  <!-- Section title -->
+  <text x="60" y="80" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#FF6B35" font-weight="bold">PAIN POINTS</text>
+  <text x="60" y="130" font-family="Noto Sans SC, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">用户痛点</text>
+
+  <!-- Pain cards row -->
+  <g transform="translate(100, 180)">
+    <rect width="340" height="180" rx="12" fill="#1A0A10" stroke="#FF6B35" stroke-width="1"/>
+    <text x="170" y="50" font-family="sans-serif" font-size="48" text-anchor="middle">💸</text>
+    <text x="170" y="100" font-family="Noto Sans SC, sans-serif" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">85%月光族</text>
+    <text x="170" y="140" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">工资花光却不知</text>
+    <text x="170" y="160" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">花到哪里去了</text>
+  </g>
+  <g transform="translate(470, 180)">
+    <rect width="340" height="180" rx="12" fill="#1A0A10" stroke="#FF6B35" stroke-width="1"/>
+    <text x="170" y="50" font-family="sans-serif" font-size="48" text-anchor="middle">🤷</text>
+    <text x="170" y="100" font-family="Noto Sans SC, sans-serif" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">记不住</text>
+    <text x="170" y="140" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">靠记忆记账</text>
+    <text x="170" y="160" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">完全不靠谱</text>
+  </g>
+  <g transform="translate(840, 180)">
+    <rect width="340" height="180" rx="12" fill="#1A0A10" stroke="#FF6B35" stroke-width="1"/>
+    <text x="170" y="50" font-family="sans-serif" font-size="48" text-anchor="middle">📱</text>
+    <text x="170" y="100" font-family="Noto Sans SC, sans-serif" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">App太复杂</text>
+    <text x="170" y="140" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">现有记账软件</text>
+    <text x="170" y="160" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">太难不想用</text>
+  </g>
+
+  <!-- Big stat -->
+  <rect x="340" y="420" width="600" height="100" rx="12" fill="#152538" stroke="#00D4FF" stroke-width="2"/>
+  <text x="640" y="485" font-family="Noto Sans SC, sans-serif" font-size="48" font-weight="bold" fill="#00D4FF" text-anchor="middle">超过4.5亿潜在用户��被满足</text>
+
+  <!-- Page number -->
+  <text x="640" y="690" font-family="sans-serif" font-size="12" fill="#666" text-anchor="middle">2 / 5</text>
+</svg>

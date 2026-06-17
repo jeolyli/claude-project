@@ -4,7 +4,7 @@
  */
 
 import { initPage, renderTabBar, showToast } from './app.js';
-import { getUserData, saveUserData, generateId } from './storage.js';
+import { getUserData, saveUserData, generateId, pushDataToBackend } from './storage.js';
 
 let currentUser = null;
 let currentType = 'expense'; // 'expense' | 'income'
@@ -76,6 +76,9 @@ function saveCategories() {
   const data = getUserData(currentUser.id);
   data.categories = categories;
   saveUserData(currentUser.id, data);
+
+  // 异步推送到后端
+  pushDataToBackend(currentUser.id);
 }
 
 function getFilteredCategories() {
@@ -281,11 +284,6 @@ function handleSave() {
 
 // ===== 删除确认 =====
 function confirmDelete(category) {
-  // 预设分类不可删除
-  if (category.is_preset) {
-    showToast('系统预设分类不可删除', 'error');
-    return;
-  }
 
   // 至少保留1个分类（宽松限制）
   const filtered = getFilteredCategories();

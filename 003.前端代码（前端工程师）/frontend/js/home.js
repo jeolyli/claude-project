@@ -4,7 +4,7 @@
  */
 
 import { initPage, renderTabBar, showToast } from './app.js';
-import { getUserData, saveUserData, getCategoryByName, generateId } from './storage.js';
+import { getUserData, saveUserData, getCategoryByName, generateId, pushDataToBackend } from './storage.js';
 
 // ===== 状态 =====
 let currentUser = null;
@@ -195,7 +195,7 @@ function handleSaveRecord() {
     type: recordType,
     amount,
     category: selectedCategory,
-    categoryIcon: cat.icon,
+    categoryIcon: cat?.icon || '📦',
     date: today,
     note: noteStr.trim() || undefined,
     created_at: now,
@@ -205,6 +205,9 @@ function handleSaveRecord() {
   const data = getUserData(currentUser.id);
   data.transactions.unshift(newTx);
   saveUserData(currentUser.id, data);
+
+  // 异步推送到后端（静默，不阻塞 UI）
+  pushDataToBackend(currentUser.id);
 
   // 重置表单
   document.getElementById('recordAmount').value = '';

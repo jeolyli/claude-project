@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="topBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#FF85A2"/>
+    </linearGradient>
+    <linearGradient id="bgGlow" x1="50%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1565C0" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FF85A2" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#FAFBFD"/>
+  <rect width="1280" height="720" fill="url(#bgGlow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#topBar)"/>
+  <text x="640" y="280" text-anchor="middle" font-family="Georgia, 'Microsoft YaHei', serif" font-size="60" font-weight="bold" fill="#1E293B">灵记 (LingJi)</text>
+  <text x="640" y="350" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="26" fill="#64748B">项目运营手册</text>
+  <rect x="560" y="380" width="160" height="3" rx="1.5" fill="#FF85A2"/>
+  <text x="640" y="430" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">个人财务管理工具 · 从零到一的运营实践</text>
+  <text x="640" y="620" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="15" fill="#94A3B8">2026年6月 · V1.0</text>
+</svg>

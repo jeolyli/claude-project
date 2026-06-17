@@ -48,3 +48,10 @@ Desktop.ini
 # Temp files
 *.tmp
 *.temp
+
+# Skills lock
+skills-lock.json
+# Duplicate ppt-master
+010.内容运营（自媒体与运营）/ppt-master-main/
+# 周报
+000.文档纪要/

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,45 H62 A2,2 0 0 1 64,47 V79 A2,2 0 0 1 62,81 H62 A2,2 0 0 1 60,79 V47 A2,2 0 0 1 62,45 Z" />
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">六大核心功能</text>
+  
+  <path fill="#F0F2F7" d="M72,120 H418 A12,12 0 0 1 430,132 V284 A12,12 0 0 1 418,296 H72 A12,12 0 0 1 60,284 V132 A12,12 0 0 1 72,120 Z" />
+  <path fill="#FF85A2" d="M62,132 H62 A2,2 0 0 1 64,134 V158 A2,2 0 0 1 62,160 H62 A2,2 0 0 1 60,158 V134 A2,2 0 0 1 62,132 Z" />
+  <text x="80" y="155" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">快速记账</text>
+  <text x="80" y="190" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">3秒完成: 选类型-点分类-输金额-保存</text>
+  <text x="80" y="220" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">没有冗余表单字段，减少记账阻力</text>
+  <text x="80" y="250" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">Web版有飘浮动画反馈，APP版有Toast提示</text>
+  <path fill="#F0F2F7" d="M467,120 H813 A12,12 0 0 1 825,132 V284 A12,12 0 0 1 813,296 H467 A12,12 0 0 1 455,284 V132 A12,12 0 0 1 467,120 Z" />
+  <path fill="#FF85A2" d="M457,132 H457 A2,2 0 0 1 459,134 V158 A2,2 0 0 1 457,160 H457 A2,2 0 0 1 455,158 V134 A2,2 0 0 1 457,132 Z" />
+  <text x="475" y="155" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">预算看板</text>
+  <text x="475" y="190" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">月度进度条 + 健康度标签</text>
+  <text x="475" y="220" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">绿/黄/橙/红四档阈值 (60/85/100%)</text>
+  <text x="475" y="250" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">直观反馈，而非冷冰冰的数字</text>
+  <path fill="#F0F2F7" d="M862,120 H1208 A12,12 0 0 1 1220,132 V284 A12,12 0 0 1 1208,296 H862 A12,12 0 0 1 850,284 V132 A12,12 0 0 1 862,120 Z" />
+  <path fill="#FF85A2" d="M852,132 H852 A2,2 0 0 1 854,134 V158 A2,2 0 0 1 852,160 H852 A2,2 0 0 1 850,158 V134 A2,2 0 0 1 852,132 Z" />
+  <text x="870" y="155" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">账单筛选</text>
+  <text x="870" y="190" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">搜索 + 多维度筛选</text>
+  <text x="870" y="220" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">类型/时间/分类/日期范围</text>
+  <text x="870" y="250" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">按时间分组: 今天→昨天→本周→本月→更早</text>
+  <path fill="#F0F2F7" d="M72,320 H418 A12,12 0 0 1 430,332 V484 A12,12 0 0 1 418,496 H72 A12,12 0 0 1 60,484 V332 A12,12 0 0 1 72,320 Z" />
+  <path fill="#FF85A2" d="M62,332 H62 A2,2 0 0 1 64,334 V358 A2,2 0 0 1 62,360 H62 A2,2 0 0 1 60,358 V334 A2,2 0 0 1 62,332 Z" />
+  <text x="80" y="355" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">统计分析</text>
+  <text x="80" y="390" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">周/月切换 + 折线图 + 环形图</text>
+  <text x="80" y="420" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">收支汇总卡片 + 日均支出</text>
+  <text x="80" y="450" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">吉祥物动态消费建议</text>
+  <path fill="#F0F2F7" d="M467,320 H813 A12,12 0 0 1 825,332 V484 A12,12 0 0 1 813,496 H467 A12,12 0 0 1 455,484 V332 A12,12 0 0 1 467,320 Z" />
+  <path fill="#FF85A2" d="M457,332 H457 A2,2 0 0 1 459,334 V358 A2,2 0 0 1 457,360 H457 A2,2 0 0 1 455,358 V334 A2,2 0 0 1 457,332 Z" />
+  <text x="475" y="355" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">分类管理</text>
+  <text x="475" y="390" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">自定义分类 + Emoji + 颜色</text>
+  <text x="475" y="420" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">8×8 Emoji网格 + 24色选择器</text>
+  <text x="475" y="450" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">软删除保护 (最少保留1个)</text>
+  <path fill="#F0F2F7" d="M862,320 H1208 A12,12 0 0 1 1220,332 V484 A12,12 0 0 1 1208,496 H862 A12,12 0 0 1 850,484 V332 A12,12 0 0 1 862,320 Z" />
+  <path fill="#FF85A2" d="M852,332 H852 A2,2 0 0 1 854,334 V358 A2,2 0 0 1 852,360 H852 A2,2 0 0 1 850,358 V334 A2,2 0 0 1 852,332 Z" />
+  <text x="870" y="355" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">数据同步</text>
+  <text x="870" y="390" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">Web端 ↔ APP端数据互通</text>
+  <text x="870" y="420" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">localStorage优先 + 后端静默备份</text>
+  <text x="870" y="450" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">换设备不用重新记账</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">05</text>
+</svg>

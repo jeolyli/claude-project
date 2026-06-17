@@ -3,7 +3,7 @@
  */
 
 import { initPage, renderHeaderUser, showToast } from './app.js';
-import { getUserData, saveUserData } from './storage.js';
+import { getUserData, saveUserData, pushDataToBackend } from './storage.js';
 
 let currentUser = null;
 let categories = [];
@@ -121,7 +121,7 @@ function updateCategorySum() {
   }
 }
 
-function saveBudget() {
+async function saveBudget() {
   const totalInput = document.getElementById('totalBudgetInput');
   const total = parseFloat(totalInput?.value) || 0;
 
@@ -150,6 +150,9 @@ function saveBudget() {
     updated_at: new Date().toISOString(),
   };
   saveUserData(currentUser.id, data);
+
+  // 等待后端同步完成后再跳转，避免请求被浏览器取消
+  await pushDataToBackend(currentUser.id);
 
   showToast('✅ 预算已保存');
   setTimeout(() => {

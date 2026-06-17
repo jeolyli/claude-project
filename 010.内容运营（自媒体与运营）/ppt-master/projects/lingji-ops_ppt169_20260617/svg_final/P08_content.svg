@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,45 H62 A2,2 0 0 1 64,47 V79 A2,2 0 0 1 62,81 H62 A2,2 0 0 1 60,79 V47 A2,2 0 0 1 62,45 Z" />
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">内容矩阵与发布节奏</text>
+  <text x="76" y="100" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">核心目标: 让目标用户知道这个工具的存在，并觉得'这个人懂我'</text>
+  
+  <path fill="#F0F2F7" d="M72,140 H418 A12,12 0 0 1 430,152 V368 A12,12 0 0 1 418,380 H72 A12,12 0 0 1 60,368 V152 A12,12 0 0 1 72,140 Z" />
+  <text x="80" y="180" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">小红书主号</text>
+  <text x="80" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">人设: '一个认真记账的普通女孩'</text>
+  <text x="80" y="240" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">内容: 记账方法(50%)+消费复盘(30%)</text>
+  <text x="80" y="265" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">+工具推荐(20%)</text>
+  <text x="80" y="300" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">风格: 手写体+实拍图，不修模板图</text>
+  <text x="80" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">每周1篇，周末发布</text>
+  <path fill="#F0F2F7" d="M467,140 H813 A12,12 0 0 1 825,152 V368 A12,12 0 0 1 813,380 H467 A12,12 0 0 1 455,368 V152 A12,12 0 0 1 467,140 Z" />
+  <text x="475" y="180" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">GitHub项目主页</text>
+  <text x="475" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">README: Logo+一句话+GIF+快速开始</text>
+  <text x="475" y="240" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">开发日志 + Roadmap</text>
+  <text x="475" y="265" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">Release Notes写成产品更新日志</text>
+  <text x="475" y="300" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">技术栈列表不要放在最前面</text>
+  <text x="475" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">每两周1次提交+Release Note</text>
+  <path fill="#F0F2F7" d="M862,140 H1208 A12,12 0 0 1 1220,152 V368 A12,12 0 0 1 1208,380 H862 A12,12 0 0 1 850,368 V152 A12,12 0 0 1 862,140 Z" />
+  <text x="870" y="180" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">即刻/微博碎片化</text>
+  <text x="870" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">分享开发过程中的真实片段</text>
+  <text x="870" y="240" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">'修了个Bug修到凌晨两点，</text>
+  <text x="870" y="265" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">发现是自己拼错了变量名'</text>
+  <text x="870" y="300" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">这种内容比功能宣传更有吸引力</text>
+  <text x="870" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">不定时更新，有东西才发</text>
+  
+  <path fill="#F0F2F7" d="M72,420 H1208 A12,12 0 0 1 1220,432 V588 A12,12 0 0 1 1208,600 H72 A12,12 0 0 1 60,588 V432 A12,12 0 0 1 72,420 Z" />
+  <text x="80" y="460" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#DC2626">内容禁区</text>
+  <text x="80" y="500" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不说'颠覆'、'革命'、'重新定义' — 这是一个记账工具，不是iPhone。</text>
+  <text x="80" y="530" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不发纯功能列表。'支持50种分类'没人会分享，'靠记账省了3000块'才会。</text>
+  <text x="80" y="560" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不在内容中过度美化。记账解决的是'钱去哪了'，不是'怎么赚钱'。</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">08</text>
+</svg>

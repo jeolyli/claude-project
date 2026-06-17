@@ -74,11 +74,16 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ success: false, error: '服务器内部错误' });
 });
 
-// --- 启动 ---
-app.listen(PORT, async () => {
-  console.log(`🐰 灵记后端已启动 → http://localhost:${PORT}`);
-  console.log(`📁 静态文件目录: ${STATIC_DIR}`);
-  console.log(`🔑 API 端点: http://localhost:${PORT}/api/auth/login`);
-  console.log(`🔑 API 端点: http://localhost:${PORT}/api/auth/register`);
-  await checkDatabase();
-});
+// --- 导出 app 供测试使用 ---
+module.exports = app;
+
+// --- 启动 (仅直接运行时监听端口，测试时不启动) ---
+if (require.main === module) {
+  app.listen(PORT, async () => {
+    console.log(`🐰 灵记后端已启动 → http://localhost:${PORT}`);
+    console.log(`📁 静态文件目录: ${STATIC_DIR}`);
+    console.log(`🔑 API 端点: http://localhost:${PORT}/api/auth/login`);
+    console.log(`🔑 API 端点: http://localhost:${PORT}/api/auth/register`);
+    await checkDatabase();
+  });
+}

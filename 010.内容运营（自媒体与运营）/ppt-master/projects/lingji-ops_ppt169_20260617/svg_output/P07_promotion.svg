@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD"/>
+  <rect x="60" y="45" width="4" height="36" rx="2" fill="#1565C0"/>
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">零预算推广三阶段</text>
+  <!-- Phase 1 -->
+  <rect x="60" y="120" width="370" height="390" rx="12" fill="#F0F2F7"/>
+  <text x="80" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">第一阶段 0-3月</text>
+  <text x="80" y="200" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1E293B">熟人圈子 + 技术社区</text>
+  <text x="80" y="235" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">GitHub开源推广: README放GIF</text>
+  <text x="80" y="265" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">V2EX/小众软件发帖求反馈</text>
+  <text x="80" y="295" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">朋友圈定向分享给10个朋友</text>
+  <text x="80" y="335" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">关键: 真诚求反馈 > 硬推广</text>
+  <!-- Arrow -->
+  <rect x="440" y="300" width="30" height="4" rx="2" fill="#FF85A2"/>
+  <text x="475" y="308" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" fill="#FF85A2">→</text>
+  <!-- Phase 2 -->
+  <rect x="455" y="120" width="370" height="390" rx="12" fill="#F0F2F7"/>
+  <text x="475" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">第二阶段 3-6月</text>
+  <text x="475" y="200" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1E293B">内容 + 工具属性传播</text>
+  <text x="475" y="235" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">小红书: 记账工具客观对比</text>
+  <text x="475" y="265" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">B站: 从零开发记账APP的记录</text>
+  <text x="475" y="295" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">知乎: 以用户身份回答推荐</text>
+  <text x="475" y="335" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">关键: 真实体验 > 功能列表</text>
+  <!-- Phase 3 -->
+  <rect x="850" y="120" width="370" height="390" rx="12" fill="#F0F2F7"/>
+  <text x="870" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">第三阶段 6-12月</text>
+  <text x="870" y="200" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1E293B">口碑 + 场景化传播</text>
+  <text x="870" y="235" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">用户自发推荐</text>
+  <text x="870" y="265" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">年度账单功能 (12月底)</text>
+  <text x="870" y="295" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不做付费推广</text>
+  <text x="870" y="335" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">关键: 保证首次体验 > 追求增长</text>
+  <rect x="60" y="540" width="1160" height="3" rx="1.5" fill="#E2E8F0"/>
+  <text x="60" y="580" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" font-weight="bold" fill="#1E293B">不做的事</text>
+  <text x="60" y="615" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不做付费推广。工具型产品的CAC如果大于0，就需要靠付费模式回收，而当前产品没有付费能力。</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">07</text>
+</svg>

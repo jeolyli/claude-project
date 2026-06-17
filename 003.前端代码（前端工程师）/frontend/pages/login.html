@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#FF85A2">
+  <style>html,body{background:#FFEEF2;color-scheme:only light}</style>
   <title>灵记 - 登录</title>
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/auth.css">
@@ -19,20 +20,11 @@
   <script>
     const { createElement: h, useState, useEffect, useRef } = React;
 
-    // ===== localStorage 预设分类（与 storage.js 保持一致） =====
-    const PRESET_CATEGORIES = [
-      { id:'cat_food',          name:'餐饮', icon:'🍽️', color:'#FFAB91', type:'both', sort_order:1, is_preset:true, is_active:true },
-      { id:'cat_transport',     name:'交通', icon:'🚌', color:'#9EB7D4', type:'both', sort_order:2, is_preset:true, is_active:true },
-      { id:'cat_shopping',      name:'购物', icon:'🛒', color:'#FFB3C6', type:'both', sort_order:3, is_preset:true, is_active:true },
-      { id:'cat_housing',       name:'居住', icon:'🏠', color:'#F0D5BE', type:'both', sort_order:4, is_preset:true, is_active:true },
-      { id:'cat_entertainment', name:'娱乐', icon:'🎮', color:'#C5A3D9', type:'both', sort_order:5, is_preset:true, is_active:true },
-      { id:'cat_medical',       name:'医疗', icon:'💊', color:'#A8D8CA', type:'both', sort_order:6, is_preset:true, is_active:true },
-      { id:'cat_education',     name:'教育', icon:'📚', color:'#F9E4B7', type:'both', sort_order:7, is_preset:true, is_active:true },
-      { id:'cat_other',         name:'其他', icon:'📦', color:'#D4C5CB', type:'both', sort_order:8, is_preset:true, is_active:true },
-    ];
+    // ===== 预设分类（已清空，用户自行创建） =====
+    const PRESET_CATEGORIES = [];
 
-    // ===== API 基础地址 =====
-    const API_BASE = window.location.origin + '/api';
+    // ===== API 基础地址（Java 后端） =====
+    const API_BASE = 'http://localhost:8086/api';
 
     // ===== 登录页面组件 =====
     function LoginPage() {
@@ -133,11 +125,23 @@
           if (!localStorage.getItem(`lingji_data_${data.user.id}`)) {
             localStorage.setItem(`lingji_data_${data.user.id}`, JSON.stringify({
               transactions: [],
-              categories: [...PRESET_CATEGORIES],
+              categories: [],
               budget: { total_budget: 5000, category_budgets: {} },
               recurringBills: [],
             }));
           }
+
+          // --- 从后端拉取最新数据（静默，失败不阻塞） ---
+          try {
+            const syncRes = await fetch(`${API_BASE}/data?userId=${data.user.id}`);
+            if (syncRes.ok) {
+              const backendData = await syncRes.json();
+              if (backendData && (backendData.transactions?.length || backendData.budget)) {
+                localStorage.setItem(`lingji_data_${data.user.id}`, JSON.stringify(backendData));
+                console.log('[sync] 已从后端拉取数据:', backendData.transactions?.length || 0, '条流水');
+              }
+            }
+          } catch (_) { /* 静默降级 */ }
 
           showToast('🎉 登录成功！欢迎回来～');
           setTimeout(() => { window.location.href = 'home.html'; }, 600);

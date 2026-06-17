@@ -7,17 +7,8 @@
  *   lingji_data_{userId}   → { transactions, categories, budgets, recurringBills }
  */
 
-// ===== 预设分类 =====
-export const PRESET_CATEGORIES = [
-  { id: 'cat_food', name: '餐饮', icon: '🍽️', color: '#FFAB91', type: 'both', sort_order: 1, is_preset: true, is_active: true },
-  { id: 'cat_transport', name: '交通', icon: '🚌', color: '#9EB7D4', type: 'both', sort_order: 2, is_preset: true, is_active: true },
-  { id: 'cat_shopping', name: '购物', icon: '🛒', color: '#FFB3C6', type: 'both', sort_order: 3, is_preset: true, is_active: true },
-  { id: 'cat_housing', name: '居住', icon: '🏠', color: '#F0D5BE', type: 'both', sort_order: 4, is_preset: true, is_active: true },
-  { id: 'cat_entertainment', name: '娱乐', icon: '🎮', color: '#C5A3D9', type: 'both', sort_order: 5, is_preset: true, is_active: true },
-  { id: 'cat_medical', name: '医疗', icon: '💊', color: '#A8D8CA', type: 'both', sort_order: 6, is_preset: true, is_active: true },
-  { id: 'cat_education', name: '教育', icon: '📚', color: '#F9E4B7', type: 'both', sort_order: 7, is_preset: true, is_active: true },
-  { id: 'cat_other', name: '其他', icon: '📦', color: '#D4C5CB', type: 'both', sort_order: 8, is_preset: true, is_active: true },
-];
+// ===== 预设分类（已清空，用户自行创建） =====
+export const PRESET_CATEGORIES = [];
 
 // ===== 常量 =====
 const KEYS = {
@@ -119,9 +110,9 @@ export function getUserData(userId) {
     const raw = localStorage.getItem(dataKey(userId));
     if (raw) {
       const data = JSON.parse(raw);
-      // 标准化 categories
-      if (!data.categories || data.categories.length === 0) {
-        data.categories = [...PRESET_CATEGORIES];
+      // 确保 categories 至少是数组
+      if (!data.categories || !Array.isArray(data.categories)) {
+        data.categories = [];
       }
       // 标准化 budget（兼容旧数据）
       if (!data.budget || typeof data.budget.total_budget !== 'number') {
@@ -134,7 +125,7 @@ export function getUserData(userId) {
   }
   return {
     transactions: [],
-    categories: [...PRESET_CATEGORIES],
+    categories: [],
     budget: { total_budget: 5000, category_budgets: {} },
     recurringBills: [],
   };
@@ -197,11 +188,46 @@ export function resetLoginFailRecord() {
   localStorage.removeItem(LOGIN_FAIL_KEY);
 }
 
+// ===== 后端 API 同步 =====
+
+const API_BASE = 'http://localhost:8086/api';
+
+/** 从后端拉取数据并写入 localStorage */
+export async function pullDataFromBackend(userId) {
+  try {
+    const res = await fetch(`${API_BASE}/data?userId=${userId}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const backendData = await res.json();
+    localStorage.setItem(dataKey(userId), JSON.stringify(backendData));
+    console.log('[sync] 已从后端拉取:', backendData.transactions?.length || 0, '条流水');
+    return backendData;
+  } catch (err) {
+    console.warn('[sync] 拉取失败，降级本地:', err.message);
+    return getUserData(userId);
+  }
+}
+
+/** 将 localStorage 数据推送到后端 */
+export async function pushDataToBackend(userId) {
+  try {
+    const data = getUserData(userId);
+    await fetch(`${API_BASE}/data/sync?userId=${userId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      keepalive: true,
+    });
+    console.log('[sync] 已推送到后端');
+  } catch (err) {
+    console.warn('[sync] 推送失败:', err.message);
+  }
+}
+
 // ===== 工具函数 =====
 
 /** 获取分类信息 */
 export function getCategoryByName(name) {
-  return PRESET_CATEGORIES.find((c) => c.name === name) || PRESET_CATEGORIES[7]; // 默认"其他"
+  return PRESET_CATEGORIES.find((c) => c.name === name) || null;
 }
 
 /** 生成 UUID（简化版） */

@@ -1,0 +1,24 @@
+# 测试环境配置
+# 使用 H2 内存数据库替代 MySQL，加速测试执行
+spring:
+  datasource:
+    url: jdbc:h2:mem:lingji_test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# JWT 测试密钥
+lingji:
+  jwt:
+    secret: test_secret_key_for_unit_tests_32bytes
+    expiration: 604800000

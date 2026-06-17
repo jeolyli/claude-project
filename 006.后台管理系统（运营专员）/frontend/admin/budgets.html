@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>预算管理 · 灵记后台</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+<nav class="topnav">
+  <span class="topnav-brand">🐰 灵记 · 预算管理</span>
+  <div class="topnav-links">
+    <a href="dashboard.html">概览</a>
+    <a href="users.html">用户</a>
+    <a href="transactions.html">交易</a>
+    <a href="budgets.html" class="active">预算</a>
+    <a href="#" onclick="logout()">退出</a>
+  </div>
+</nav>
+<div class="main">
+  <div class="toolbar">
+    <select id="healthFilter" class="tb-select" onchange="load()">
+      <option value="">全部健康度</option>
+      <option value="red">🔴 超支</option>
+      <option value="orange">🟠 警告</option>
+      <option value="yellow">🟡 关注</option>
+      <option value="green">🟢 健康</option>
+    </select>
+    <span class="tb-info" id="info"></span>
+  </div>
+  <table>
+    <thead><tr><th>用户</th><th>年月</th><th>总预算</th><th>实际支出</th><th>剩余</th><th>使用率</th><th>健康度</th></tr></thead>
+    <tbody id="tbl"></tbody>
+  </table>
+</div>
+<script src="js/admin-common.js"></script>
+<script>
+checkAuth();
+
+async function load() {
+  const h = document.getElementById('healthFilter').value;
+  const params = new URLSearchParams();
+  if (h) params.set('health', h);
+  const d = await fetchJSON(`/budgets?${params}`);
+  if (!d.success) return;
+  document.getElementById('info').textContent = `共 ${d.data.length} 条`;
+  document.getElementById('tbl').innerHTML = d.data.map(b =>
+    `<tr>
+      <td>${b.username} (${b.nickname||'-'})</td>
+      <td>${b.year}-${String(b.month).padStart(2,'0')}</td>
+      <td>¥${fmt(b.total_budget)}</td>
+      <td>¥${fmt(b.actual_expense)}</td>
+      <td style="color:${b.remaining>0?'#16A34A':'#DC2626'}">¥${fmt(b.remaining)}</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill ${b.health}" style="width:${Math.min(b.usagePercent,100)}%"></div></div>
+        <span style="font-size:12px;color:#94A3B8">${b.usagePercent.toFixed(1)}%</span>
+      </td>
+      <td><span class="tag tag-${b.health}">${({green:'健康',yellow:'关注',orange:'警告',red:'超支'})[b.health]||b.health}</span></td>
+    </tr>`
+  ).join('');
+}
+
+function logout() { localStorage.clear(); location.href = 'login.html'; }
+load();
+</script>
+</body>
+</html>

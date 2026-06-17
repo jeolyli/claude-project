@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>用户管理 · 灵记后台</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+<nav class="topnav">
+  <span class="topnav-brand">🐰 灵记 · 用户管理</span>
+  <div class="topnav-links">
+    <a href="dashboard.html">概览</a>
+    <a href="users.html" class="active">用户</a>
+    <a href="transactions.html">交易</a>
+    <a href="budgets.html">预算</a>
+    <a href="#" onclick="logout()">退出</a>
+  </div>
+</nav>
+<div class="main">
+  <div class="toolbar">
+    <input id="keyword" class="tb-input" type="text" placeholder="搜索用户名/昵称" oninput="load(1)">
+    <select id="statusFilter" class="tb-select" onchange="load(1)">
+      <option value="">全部状态</option>
+      <option value="1">启用</option>
+      <option value="0">禁用</option>
+    </select>
+    <span class="tb-info" id="pageInfo"></span>
+  </div>
+  <table>
+    <thead><tr><th>ID</th><th>用户名</th><th>昵称</th><th>邮箱</th><th>交易笔数</th><th>最近交易</th><th>注册时间</th><th>状态</th><th>操作</th></tr></thead>
+    <tbody id="tbl"></tbody>
+  </table>
+  <div class="pager" id="pager"></div>
+
+  <!-- User detail modal -->
+  <div class="modal" id="detailModal" style="display:none">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeDetail()">✕</span>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+</div>
+<script src="js/admin-common.js"></script>
+<script>
+checkAuth();
+let page = 1, totalPages = 1;
+
+async function load(p) {
+  page = p || 1;
+  const kw = document.getElementById('keyword').value;
+  const st = document.getElementById('statusFilter').value;
+  const d = await fetchJSON(`/users?page=${page}&pageSize=20&keyword=${kw}&status=${st}`);
+  if (!d.success) return;
+  totalPages = Math.ceil(d.data.total / d.data.pageSize);
+  document.getElementById('pageInfo').textContent = `共 ${d.data.total} 条`;
+  document.getElementById('tbl').innerHTML = d.data.records.map(u =>
+    `<tr>
+      <td>${u.id}</td><td>${u.username}</td><td>${u.nickname||'-'}</td><td>${u.email||'-'}</td>
+      <td>${u.tx_count}</td><td>${fmtDate(u.last_tx_date)}</td><td>${fmtDate(u.created_at)}</td>
+      <td><span class="tag tag-${u.status==1?'on':'off'}">${u.status==1?'启用':'禁用'}</span></td>
+      <td>
+        <button class="btn-sm" onclick="showDetail(${u.id})">详情</button>
+        <button class="btn-sm btn-warn" onclick="toggleStatus(${u.id},${u.status})">${u.status==1?'禁用':'启用'}</button>
+      </td>
+    </tr>`
+  ).join('');
+  document.getElementById('pager').innerHTML = Array.from({length:totalPages},(_,i)=>
+    `<button class="btn-pg${i+1===page?' active':''}" onclick="load(${i+1})">${i+1}</button>`
+  ).join('');
+}
+
+async function showDetail(id) {
+  const d = await fetchJSON(`/users/${id}`);
+  if (!d.success) return alert(d.error);
+  const u = d.data;
+  document.getElementById('detailContent').innerHTML = `
+    <h3>${u.user.nickname || u.user.username} (ID:${u.user.id})</h3>
+    <p>用户名: ${u.user.username} | 邮箱: ${u.user.email||'-'} | 注册: ${fmtDate(u.user.created_at)}</p>
+    <h4>交易统计</h4>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">
+      ${(u.txStats||[]).map(s => `<div class="card"><div class="card-val">¥${fmt(s.total)}</div><div class="card-label">${s.type==='expense'?'支出':'收入'} (${s.count}笔)</div></div>`).join('')}
+    </div>
+    <h4>最近交易</h4>
+    <table><thead><tr><th>日期</th><th>类型</th><th>分类</th><th>金额</th><th>备注</th></tr></thead>
+    <tbody>${(u.recentTx||[]).map(t =>
+      `<tr><td>${t.date}</td><td>${t.type==='income'?'收入':'支出'}</td><td>${t.category_name||'-'}</td><td>¥${fmt(t.amount)}</td><td>${t.note||''}</td></tr>`
+    ).join('')}</tbody></table>
+    <h4>预算</h4>
+    <table><thead><tr><th>年月</th><th>总预算</th></tr></thead>
+    <tbody>${(u.budget||[]).map(b =>
+      `<tr><td>${b.year}-${b.month}</td><td>¥${fmt(b.total_budget)}</td></tr>`
+    ).join('')}</tbody></table>`;
+  document.getElementById('detailModal').style.display = 'flex';
+}
+
+function closeDetail() { document.getElementById('detailModal').style.display = 'none'; }
+
+async function toggleStatus(id, cur) {
+  if (!confirm(`确定${cur==1?'禁用':'启用'}此用户?`)) return;
+  const d = await fetch(adminAPI + `/users/${id}/status`, {
+    method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('lingji_admin_token')}` },
+    body: JSON.stringify({ status: cur == 1 ? 0 : 1 })
+  });
+  const r = await d.json();
+  if (r.success) load(page); else alert(r.error);
+}
+
+function logout() { localStorage.clear(); location.href = 'login.html'; }
+load(1);
+</script>
+</body>
+</html>

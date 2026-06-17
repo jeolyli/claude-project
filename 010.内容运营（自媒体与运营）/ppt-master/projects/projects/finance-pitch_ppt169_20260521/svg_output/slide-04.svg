@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1428"/>
+      <stop offset="100%" stop-color="#1E3A5F"/>
+    </linearGradient>
+    <linearGradient id="bigNumGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#00FF88"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bgGrad)"/>
+
+  <!-- Section title -->
+  <text x="60" y="80" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#00D4FF" font-weight="bold">MARKET</text>
+  <text x="60" y="130" font-family="Noto Sans SC, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">广阔市场</text>
+
+  <!-- Big number -->
+  <text x="640" y="270" font-family="Noto Sans SC, sans-serif" font-size="100" font-weight="900" fill="url(#bigNumGrad)" text-anchor="middle" filter="url(#glow)">500亿+</text>
+  <text x="640" y="330" font-family="Noto Sans SC, sans-serif" font-size="20" fill="#B8C5D6" text-anchor="middle">中国个人财务管理市场规模</text>
+
+  <!-- Stats row -->
+  <g transform="translate(160, 380)">
+    <rect width="280" height="140" rx="12" fill="#152538" stroke="#00D4FF" stroke-width="1"/>
+    <text x="140" y="60" font-family="Noto Sans SC, sans-serif" font-size="40" font-weight="bold" fill="#00D4FF" text-anchor="middle">4.5亿</text>
+    <text x="140" y="105" font-family="Noto Sans SC, sans-serif" font-size="16" fill="#B8C5D6" text-anchor="middle">潜在用户</text>
+  </g>
+  <g transform="translate(500, 380)">
+    <rect width="280" height="140" rx="12" fill="#152538" stroke="#00FF88" stroke-width="1"/>
+    <text x="140" y="60" font-family="Noto Sans SC, sans-serif" font-size="40" font-weight="bold" fill="#00FF88" text-anchor="middle">68%</text>
+    <text x="140" y="105" font-family="Noto Sans SC, sans-serif" font-size="16" fill="#B8C5D6" text-anchor="middle">手机渗透率</text>
+  </g>
+  <g transform="translate(840, 380)">
+    <rect width="280" height="140" rx="12" fill="#152538" stroke="#FF6B35" stroke-width="1"/>
+    <text x="140" y="60" font-family="Noto Sans SC, sans-serif" font-size="40" font-weight="bold" fill="#FF6B35" text-anchor="middle">32%</text>
+    <text x="140" y="105" font-family="Noto Sans SC, sans-serif" font-size="16" fill="#B8C5D6" text-anchor="middle">付费意愿</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="640" y="580" font-family="Noto Sans SC, sans-serif" font-size="18" fill="#00FF88" text-anchor="middle" font-weight="bold">蓝海市场，等你来占</text>
+
+  <!-- Page number -->
+  <text x="640" y="690" font-family="sans-serif" font-size="12" fill="#666" text-anchor="middle">4 / 5</text>
+</svg>

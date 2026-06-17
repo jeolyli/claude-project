@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD"/>
+  <rect x="60" y="45" width="4" height="36" rx="2" fill="#1565C0"/>
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">四个零成本活动</text>
+  <text x="76" y="100" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">工具型产品的活动不是促销，而是'帮用户用好工具'式的引导。以下全部零成本、可执行、不需要开发新功能。</text>
+  <!-- 4 event cards -->
+  <rect x="60" y="140" width="560" height="170" rx="12" fill="#F0F2F7"/>
+  <text x="80" y="180" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">每月活动: #本月消费关键词#</text>
+  <text x="80" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">每月1号发起话题: 看完上月账单，你的消费关键词是什么?</text>
+  <text x="80" y="245" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">用户截图统计页 + 一个词分享。天然UGC推广 + 培养月底看账单习惯</text>
+  <rect x="660" y="140" width="560" height="170" rx="12" fill="#F0F2F7"/>
+  <text x="680" y="180" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">季度活动: 21天记账挑战</text>
+  <text x="680" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">连续记账21天的小实验。不需要打卡系统。</text>
+  <text x="680" y="245" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">第22天发总结文章，放上参与者的消费变化数据(脱敏后)分享</text>
+  <rect x="60" y="340" width="560" height="170" rx="12" fill="#F0F2F7"/>
+  <text x="80" y="380" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#FF85A2">年度活动: 年度账单分享 ★最重要</text>
+  <text x="80" y="415" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">12月底上线年度账单。12个月汇总数据 + 几行文案 + 一张好看的图。</text>
+  <text x="80" y="445" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">用户分享的是'自己的年度总结'不是'在帮工具做广告'。记账工具全年最重要传播节点。</text>
+  <rect x="660" y="340" width="560" height="170" rx="12" fill="#F0F2F7"/>
+  <text x="680" y="380" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#DC2626">不做什么</text>
+  <text x="680" y="415" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">不做拉新奖励、不做邀请码、不做限时折扣。这些策略对电商/社交有效，对工具无效。</text>
+  <text x="680" y="445" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">用户会因为'这个东西真的帮我省了钱'而推荐，不会因为'邀请好友送会员'而推荐。</text>
+  <text x="640" y="580" text-anchor="middle" font-family="Georgia, 'Microsoft YaHei', serif" font-size="24" fill="#1565C0" font-weight="bold">如果只做一件事增加传播，就做年度账单</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">11</text>
+</svg>

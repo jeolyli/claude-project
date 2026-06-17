@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,45 H62 A2,2 0 0 1 64,47 V79 A2,2 0 0 1 62,81 H62 A2,2 0 0 1 60,79 V47 A2,2 0 0 1 62,45 Z" />
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">风险矩阵与应对</text>
+  
+  <text x="60" y="120" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">技术风险</text>
+  <path fill="#F0F2F7" d="M70,135 H1210 A10,10 0 0 1 1220,145 V265 A10,10 0 0 1 1210,275 H70 A10,10 0 0 1 60,265 V145 A10,10 0 0 1 70,135 Z" />
+  <text x="80" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">后端服务宕机</text>
+  <text x="260" y="165" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#DC2626">中</text>
+  <text x="290" y="165" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">后端宕机不影响Web端使用(localStorage优先)，仅影响APP端同步。应急: 前端加提示引导用户先用Web端。</text>
+  <text x="80" y="200" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">数据库数据丢失</text>
+  <text x="260" y="200" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#DC2626">高</text>
+  <text x="290" y="200" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">预防: 每天凌晨自动备份MySQL保留30天。应急: 通知用户从本地或APP重新同步。</text>
+  <text x="80" y="235" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">微信小程序审核不通过</text>
+  <text x="260" y="235" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#16A34A">低</text>
+  <text x="290" y="235" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">个人主体小程序审核宽松。确保不涉及UGC、不涉及支付、隐私政策完整。</text>
+  
+  <text x="60" y="310" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">运营风险</text>
+  <path fill="#F0F2F7" d="M70,325 H1210 A10,10 0 0 1 1220,335 V420 A10,10 0 0 1 1210,430 H70 A10,10 0 0 1 60,420 V335 A10,10 0 0 1 70,325 Z" />
+  <text x="80" y="355" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">负面评价扩散</text>
+  <text x="260" y="355" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#16A34A">低</text>
+  <text x="290" y="355" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">小体量产品几乎不会遇到。若单用户投诉，公开回复+私聊解决。不要删帖。</text>
+  <text x="80" y="390" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">竞品模仿</text>
+  <text x="260" y="390" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#DC2626">中</text>
+  <text x="290" y="390" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">工具类没有壁垒。策略不是防模仿而是跑更快: 保持月更，让模仿者总慢一个版本。</text>
+  
+  <text x="60" y="465" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1565C0">合规风险</text>
+  <path fill="#F0F2F7" d="M70,480 H1210 A10,10 0 0 1 1220,490 V605 A10,10 0 0 1 1210,615 H70 A10,10 0 0 1 60,605 V490 A10,10 0 0 1 70,480 Z" />
+  <text x="80" y="510" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">隐私政策</text>
+  <text x="260" y="510" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#DC2626">中</text>
+  <text x="290" y="510" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">APP上架必须提供。模板化隐私政策即可，说明收集了哪些数据、用途。</text>
+  <text x="80" y="545" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">开源协议缺失</text>
+  <text x="260" y="545" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#DC2626">中</text>
+  <text x="290" y="545" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">当前未声明License。建议MIT License，在GitHub仓库根目录添加LICENSE文件。</text>
+  <text x="80" y="580" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#1E293B">数据安全: API认证</text>
+  <text x="260" y="580" font-family="Georgia, 'Microsoft YaHei', serif" font-size="14" font-weight="bold" fill="#DC2626">高</text>
+  <text x="290" y="580" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="17" fill="#64748B">当前V1.0 API未强制JWT验证。在对外开放部署前修复。密码已使用BCrypt/SHA-256加密。</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">12</text>
+</svg>

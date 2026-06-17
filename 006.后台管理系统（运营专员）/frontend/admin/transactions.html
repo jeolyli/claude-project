@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>交易管理 · 灵记后台</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+<nav class="topnav">
+  <span class="topnav-brand">🐰 灵记 · 交易管理</span>
+  <div class="topnav-links">
+    <a href="dashboard.html">概览</a>
+    <a href="users.html">用户</a>
+    <a href="transactions.html" class="active">交易</a>
+    <a href="budgets.html">预算</a>
+    <a href="#" onclick="logout()">退出</a>
+  </div>
+</nav>
+<div class="main">
+  <div class="toolbar">
+    <input id="keyword" class="tb-input" type="text" placeholder="搜索金额/备注/分类" oninput="load(1)">
+    <select id="typeFilter" class="tb-select" onchange="load(1)">
+      <option value="">全部类型</option><option value="expense">支出</option><option value="income">收入</option>
+    </select>
+    <input id="startDate" class="tb-input" type="date" onchange="load(1)" style="width:140px">
+    <input id="endDate" class="tb-input" type="date" onchange="load(1)" style="width:140px">
+    <button class="btn-sm" onclick="exportCSV()">导出 CSV</button>
+    <span class="tb-info" id="pageInfo"></span>
+  </div>
+  <table>
+    <thead><tr><th>ID</th><th>用户</th><th>类型</th><th>分类</th><th>金额</th><th>日期</th><th>备注</th></tr></thead>
+    <tbody id="tbl"></tbody>
+  </table>
+  <div class="pager" id="pager"></div>
+</div>
+<script src="js/admin-common.js"></script>
+<script>
+checkAuth();
+let page = 1, totalPages = 1;
+
+async function load(p) {
+  page = p || 1;
+  const params = new URLSearchParams({ page, pageSize: 20 });
+  const kw = document.getElementById('keyword').value;
+  const tp = document.getElementById('typeFilter').value;
+  const sd = document.getElementById('startDate').value;
+  const ed = document.getElementById('endDate').value;
+  if (kw) params.set('keyword', kw);
+  if (tp) params.set('type', tp);
+  if (sd) params.set('startDate', sd);
+  if (ed) params.set('endDate', ed);
+
+  const d = await fetchJSON(`/transactions?${params}`);
+  if (!d.success) return;
+  totalPages = Math.ceil(d.data.total / d.data.pageSize);
+  document.getElementById('pageInfo').textContent = `共 ${d.data.total} 条`;
+  document.getElementById('tbl').innerHTML = d.data.records.map(t =>
+    `<tr>
+      <td>${t.id}</td><td>${t.username||'-'}</td>
+      <td><span class="tag tag-${t.type==='expense'?'expense':'income'}">${t.type==='expense'?'支出':'收入'}</span></td>
+      <td>${t.category_name||'-'}</td><td>¥${fmt(t.amount)}</td><td>${t.date}</td><td>${t.note||''}</td>
+    </tr>`
+  ).join('');
+  document.getElementById('pager').innerHTML = Array.from({length:totalPages},(_,i)=>
+    `<button class="btn-pg${i+1===page?' active':''}" onclick="load(${i+1})">${i+1}</button>`
+  ).join('');
+}
+
+function exportCSV() {
+  const sd = document.getElementById('startDate').value;
+  const ed = document.getElementById('endDate').value;
+  const tp = document.getElementById('typeFilter').value;
+  const params = new URLSearchParams();
+  if (sd) params.set('startDate', sd);
+  if (ed) params.set('endDate', ed);
+  if (tp) params.set('type', tp);
+  window.open(adminAPI + '/transactions/export?' + params.toString(), '_blank');
+}
+
+function logout() { localStorage.clear(); location.href = 'login.html'; }
+load(1);
+</script>
+</body>
+</html>

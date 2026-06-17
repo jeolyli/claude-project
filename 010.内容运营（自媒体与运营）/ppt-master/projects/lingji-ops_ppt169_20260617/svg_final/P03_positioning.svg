@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,50 H62 A2,2 0 0 1 64,52 V84 A2,2 0 0 1 62,86 H62 A2,2 0 0 1 60,84 V52 A2,2 0 0 1 62,50 Z" />
+  <text x="76" y="80" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">灵记是什么</text>
+  
+  <path fill="#F0F2F7" d="M72,130 H548 A12,12 0 0 1 560,142 V258 A12,12 0 0 1 548,270 H72 A12,12 0 0 1 60,258 V142 A12,12 0 0 1 72,130 Z" />
+  <text x="88" y="170" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">三种客户端，一套后端</text>
+  <text x="88" y="200" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">Web 浏览器版 + iOS/Android APP + 微信小程序</text>
+  <text x="88" y="228" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">共享 Java Spring Boot 后端，数据互通</text>
+  <path fill="#F0F2F7" d="M72,290 H548 A12,12 0 0 1 560,302 V418 A12,12 0 0 1 548,430 H72 A12,12 0 0 1 60,418 V302 A12,12 0 0 1 72,290 Z" />
+  <text x="88" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#1565C0">本地优先，云端辅助</text>
+  <text x="88" y="360" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">localStorage 作为主数据源，不依赖网络</text>
+  <text x="88" y="388" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">后端同步是静默备份，失败不阻塞用户操作</text>
+  <path fill="#F0F2F7" d="M72,450 H548 A12,12 0 0 1 560,462 V578 A12,12 0 0 1 548,590 H72 A12,12 0 0 1 60,578 V462 A12,12 0 0 1 72,450 Z" />
+  <text x="88" y="490" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="22" font-weight="bold" fill="#FF85A2">软萌治愈的设计语言</text>
+  <text x="88" y="520" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">樱花粉主色调 + 圆角无锐角 + 🐰 吉祥物灵灵</text>
+  <text x="88" y="548" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#1E293B">在"搞钱"类硬核工具之外，提供治愈系选择</text>
+  
+  <path fill="#1565C0" fill-opacity="0.06" d="M636,130 H1204 A16,16 0 0 1 1220,146 V274 A16,16 0 0 1 1204,290 H636 A16,16 0 0 1 620,274 V146 A16,16 0 0 1 636,130 Z" />
+  <text x="660" y="175" font-family="Georgia, 'Microsoft YaHei', serif" font-size="48" font-weight="bold" fill="#1565C0">V1.0 MVP</text>
+  <text x="660" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">当前阶段: 核心功能已完成</text>
+  <text x="660" y="245" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">记账 · 预算 · 统计 · 分类 · 数据同步</text>
+  <text x="660" y="275" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">Android 端已适配，iOS 和微信小程序测试中</text>
+  <path fill="#F0F2F7" d="M636,330 H1204 A16,16 0 0 1 1220,346 V574 A16,16 0 0 1 1204,590 H636 A16,16 0 0 1 620,574 V346 A16,16 0 0 1 636,330 Z" />
+  <text x="660" y="370" font-family="Georgia, 'Microsoft YaHei', serif" font-size="22" font-weight="bold" fill="#1E293B">现实定位</text>
+  <text x="660" y="405" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">一个面向熟人推荐的小众工具</text>
+  <text x="660" y="435" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">不是一个要烧钱推广的商业产品</text>
+  <text x="660" y="465" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">运营策略的设计前提: 零预算、可落地、可持续</text>
+  <path fill="#FF85A2" d="M662,490 H662 A2,2 0 0 1 664,492 V538 A2,2 0 0 1 662,540 H662 A2,2 0 0 1 660,538 V492 A2,2 0 0 1 662,490 Z" />
+  <text x="680" y="510" font-family="Georgia, 'Microsoft YaHei', serif" font-size="20" fill="#FF85A2" font-style="italic">开源 MIT 协议</text>
+  <text x="680" y="540" font-family="Georgia, 'Microsoft YaHei', serif" font-size="20" fill="#FF85A2" font-style="italic">个人项目 · 社区驱动</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">03</text>
+</svg>

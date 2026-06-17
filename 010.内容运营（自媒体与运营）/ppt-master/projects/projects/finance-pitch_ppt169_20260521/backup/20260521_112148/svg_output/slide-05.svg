@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1428"/>
+      <stop offset="100%" stop-color="#1E3A5F"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bgGrad)"/>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="716" width="1280" height="4" fill="#FF6B35"/>
+
+  <!-- Section title -->
+  <text x="60" y="80" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#FF6B35" font-weight="bold">TEAM</text>
+  <text x="60" y="130" font-family="Noto Sans SC, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">创始团队</text>
+
+  <!-- Team members -->
+  <g transform="translate(290, 200)">
+    <rect width="280" height="200" rx="12" fill="#152538" stroke="#FF6B35" stroke-width="1"/>
+    <text x="140" y="50" font-family="sans-serif" font-size="48" text-anchor="middle">👨‍💻</text>
+    <text x="140" y="120" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CEO</text>
+    <text x="140" y="155" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">产品负责人</text>
+    <text x="140" y="175" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">10年经验</text>
+  </g>
+  <g transform="translate(710, 200)">
+    <rect width="280" height="200" rx="12" fill="#152538" stroke="#FF6B35" stroke-width="1"/>
+    <text x="140" y="50" font-family="sans-serif" font-size="48" text-anchor="middle">👩‍💼</text>
+    <text x="140" y="120" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CTO</text>
+    <text x="140" y="155" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">技术负责人</text>
+    <text x="140" y="175" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">全栈开发</text>
+  </g>
+
+  <!-- CTA Button -->
+  <g transform="translate(440, 450)">
+    <rect width="400" height="70" rx="35" fill="url(#btnGrad)"/>
+    <text x="200" y="45" font-family="Noto Sans SC, sans-serif" font-size="22" font-weight="bold" fill="#000000" text-anchor="middle">联系我们：A轮合作</text>
+  </g>
+
+  <!-- Contact info -->
+  <text x="640" y="570" font-family="Noto Sans SC, sans-serif" font-size="14" fill="#B8C5D6" text-anchor="middle">contact@finance.com  |  138-0000-0000</text>
+
+  <!-- Page number -->
+  <text x="640" y="690" font-family="sans-serif" font-size="12" fill="#666" text-anchor="middle">5 / 5</text>
+</svg>

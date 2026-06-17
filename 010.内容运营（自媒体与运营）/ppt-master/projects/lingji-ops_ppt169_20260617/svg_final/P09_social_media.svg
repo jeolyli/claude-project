@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,45 H62 A2,2 0 0 1 64,47 V79 A2,2 0 0 1 62,81 H62 A2,2 0 0 1 60,79 V47 A2,2 0 0 1 62,45 Z" />
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">一人运营策略</text>
+  <text x="76" y="100" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">一句大实话: 单人项目不需要'媒体矩阵'，先做好一个平台比什么都重要。时间预算: 每周4小时。</text>
+  <path fill="#F0F2F7" d="M74,130 H746 A14,14 0 0 1 760,144 V456 A14,14 0 0 1 746,470 H74 A14,14 0 0 1 60,456 V144 A14,14 0 0 1 74,130 Z" />
+  <text x="90" y="175" font-family="Georgia, 'Microsoft YaHei', serif" font-size="24" font-weight="bold" fill="#1565C0">主攻平台: 小红书</text>
+  <text x="90" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="19" fill="#1E293B">选择理由: 用户画像与目标用户高度重合，长尾流量远超其他平台。一篇笔记发布3个月后仍能带来新用户。</text>
+  <text x="90" y="255" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="19" fill="#64748B">人设: '一个认真记账的普通女孩'，不要财经专家形象</text>
+  <text x="90" y="285" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="19" fill="#64748B">头像: 🐰 灵记吉祥物而非真人照片 (降低社交压力)</text>
+  <text x="90" y="315" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="19" fill="#64748B">内容日历: 周一收藏竞品-周三初稿-周四配图-周六发布</text>
+  <text x="90" y="345" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="19" fill="#64748B">互动策略: 每条评论都回复，引导对话而非简单说'谢谢'</text>
+  <text x="90" y="385" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="19" fill="#64748B">前5篇笔记在项目上线前写好，确保上线后有持续内容</text>
+  <path fill="#F0F2F7" d="M814,130 H1206 A14,14 0 0 1 1220,144 V456 A14,14 0 0 1 1206,470 H814 A14,14 0 0 1 800,456 V144 A14,14 0 0 1 814,130 Z" />
+  <text x="830" y="175" font-family="Georgia, 'Microsoft YaHei', serif" font-size="24" font-weight="bold" fill="#DC2626">不推荐</text>
+  <text x="830" y="215" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">公众号: 需要高频高质量更新，单人运营成本太高</text>
+  <text x="830" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">抖音: 记账内容视频化难度大，ROI低</text>
+  <text x="830" y="305" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">微博: 流量集中在娱乐和热点，工具类难以突围</text>
+  <text x="830" y="390" font-family="Georgia, 'Microsoft YaHei', serif" font-size="20" font-weight="bold" fill="#1E293B">辅助: GitHub</text>
+  <text x="830" y="420" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">面向开发者和潜在贡献者</text>
+  <text x="830" y="445" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">README第一屏 = Landing Page</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">09</text>
+</svg>

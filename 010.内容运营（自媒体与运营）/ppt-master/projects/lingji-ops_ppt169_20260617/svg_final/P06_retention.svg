@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FAFBFD" />
+  <path fill="#1565C0" d="M62,45 H62 A2,2 0 0 1 64,47 V79 A2,2 0 0 1 62,81 H62 A2,2 0 0 1 60,79 V47 A2,2 0 0 1 62,45 Z" />
+  <text x="76" y="75" font-family="Georgia, 'Microsoft YaHei', serif" font-size="36" font-weight="bold" fill="#1E293B">如何让用户留下来</text>
+  <text x="76" y="100" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" fill="#64748B">记账工具天生是低频工具，强求每天打开反而引起反感。核心策略: 在用户需要时出现，不需要时安静待着。</text>
+  
+  <path fill="#F0F2F7" d="M72,140 H418 A12,12 0 0 1 430,152 V408 A12,12 0 0 1 418,420 H72 A12,12 0 0 1 60,408 V152 A12,12 0 0 1 72,140 Z" />
+  <circle cx="120" cy="180" r="18" fill="#FF85A2" />
+  <text x="120" y="186" text-anchor="middle" font-family="Georgia, 'Microsoft YaHei', serif" font-size="18" font-weight="bold" fill="#FFFFFF">1</text>
+  <text x="155" y="186" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1E293B">首次记账后 7 天</text>
+  <text x="80" y="230" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">用户是否形成记账习惯</text>
+  <text x="80" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">此阶段需要降低操作门槛</text>
+  <text x="80" y="290" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不要用功能轰炸用户</text>
+  <text x="80" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">策略: 让前3次记账体验极致顺畅</text>
+  <path fill="#F0F2F7" d="M467,140 H813 A12,12 0 0 1 825,152 V408 A12,12 0 0 1 813,420 H467 A12,12 0 0 1 455,408 V152 A12,12 0 0 1 467,140 Z" />
+  <circle cx="515" cy="180" r="18" fill="#FF85A2" />
+  <text x="515" y="186" text-anchor="middle" font-family="Georgia, 'Microsoft YaHei', serif" font-size="18" font-weight="bold" fill="#FFFFFF">2</text>
+  <text x="550" y="186" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1E293B">第一个月的结算日</text>
+  <text x="475" y="230" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">用户首次看到支出汇总</text>
+  <text x="475" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">价值感知最强的时刻</text>
+  <text x="475" y="290" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">当前产品在统计页已提供</text>
+  <text x="475" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">策略: 每月1号推送上月消费小结</text>
+  <path fill="#F0F2F7" d="M862,140 H1208 A12,12 0 0 1 1220,152 V408 A12,12 0 0 1 1208,420 H862 A12,12 0 0 1 850,408 V152 A12,12 0 0 1 862,140 Z" />
+  <circle cx="910" cy="180" r="18" fill="#FF85A2" />
+  <text x="910" y="186" text-anchor="middle" font-family="Georgia, 'Microsoft YaHei', serif" font-size="18" font-weight="bold" fill="#FFFFFF">3</text>
+  <text x="945" y="186" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#1E293B">换手机/重装时</text>
+  <text x="870" y="230" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">数据同步决定是否重新开始</text>
+  <text x="870" y="260" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">当前数据同步功能的核心价值</text>
+  <text x="870" y="290" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">Web端和APP端数据互通</text>
+  <text x="870" y="330" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565C0">策略: 保持数据同步功能的稳定性</text>
+  
+  <text x="60" y="475" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="20" font-weight="bold" fill="#64748B">四个零成本维护动作</text>
+  <text x="60" y="515" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">每月1号推送上月消费小结，一次就够了</text>
+  <text x="60" y="545" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">统计页增加'分享账单'按钮，生成消费小结图</text>
+  <text x="60" y="575" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">保持GitHub Issues活跃，24小时内回复</text>
+  <text x="60" y="605" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="18" fill="#64748B">不做积分、签到、打卡。记账工具不需要这些</text>
+  <text x="1240" y="690" text-anchor="end" font-family="'Microsoft YaHei', 'PingFang SC', Arial, sans-serif" font-size="11" fill="#94A3B8">06</text>
+</svg>

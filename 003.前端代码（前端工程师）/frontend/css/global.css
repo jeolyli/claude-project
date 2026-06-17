@@ -61,6 +61,9 @@ html {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 防止页面切换时闪现黑色背景 */
+  background: var(--color-primary-100);
+  color-scheme: only light;
 }
 
 body {
@@ -68,6 +71,54 @@ body {
   color: var(--color-neutral-900);
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* ===== 页面切换：平滑过渡（View Transition API） ===== */
+@view-transition {
+  navigation: auto;
+}
+
+/* 过渡期间保持粉色背景，防止黑闪 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  background: var(--color-primary-100);
+}
+
+::view-transition-old(root) {
+  animation: fade-out 0.15s ease-out both;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.2s ease-out both;
+  background: var(--color-primary-100);
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== 页面进入：淡入上浮 ===== */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: page-enter 0.25s ease-out both;
+}
+
+/* 降级：不支持 view-transition 的浏览器，用传统动画 */
+@supports not (view-transition-name: none) {
+  .app-container {
+    animation: page-enter 0.2s ease-out both;
+  }
 }
 
 /* ===== 滚动条美化 ===== */
